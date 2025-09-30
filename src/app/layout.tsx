@@ -16,26 +16,26 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-   children: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
         <div>
           <main>
-              <ThemeProvider
-                  attribute="class"
-                  defaultTheme="system"
-                  enableSystem
-                  disableTransitionOnChange
-                  storageType="cookie"
-              >
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+              storageType="cookie"
+            >
               <Header />
-            {children}
-              </ThemeProvider>
+              {children}
+            </ThemeProvider>
           </main>
           <StdNo />
-            <Copyright />
+          <Copyright />
         </div>
       </body>
     </html>
