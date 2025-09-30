@@ -195,7 +195,7 @@ export default function TabsGenerator() {
           </div>
 
           {generatedCode && (
-            <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto">
+            <pre className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-mono text-sm p-4 rounded-lg overflow-x-auto">
               <code className="text-sm">{generatedCode}</code>
             </pre>
           )}
