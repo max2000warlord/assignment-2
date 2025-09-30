@@ -48,3 +48,6 @@ bun.lockb
 
 # Assignment sheet
 *.docx
+
+#lockfile
+package-lock.json
