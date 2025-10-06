@@ -13,7 +13,10 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
       <StdNo />
       <div className="fixed top-4 right-4 z-50 flex items-center gap-4">
         <ThemeToggle />
-        <MenuButton />
+        <MenuButton
+          isOpen={isMenuOpen}
+          onToggle={() => setIsMenuOpen(true)}
+        />
       </div>
       <SlideMenu
         isOpen={isMenuOpen}

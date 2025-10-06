@@ -4,14 +4,20 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export function MenuButton({ color = "var(--neon-cyan)" }: { color?: string }) {
-  const [isOpen, setIsMenuOpen] = useState(false)
-
+export function MenuButton({
+  color = "var(--neon-cyan)",
+  isOpen,
+  onToggle
+}: {
+  color?: string
+  isOpen: boolean
+  onToggle: () => void
+}) {
   return (
     <Button
       variant="outline"
       size="icon"
-      onClick={() => setIsMenuOpen(true)}
+      onClick={onToggle}
       className="border-2 transition-all duration-200 hover:scale-105"
       style={{
         borderColor: color,

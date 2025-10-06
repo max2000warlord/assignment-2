@@ -151,4 +151,5 @@ body {
   background-position: var(--background-position);
   background-attachment: var(--background-attachment);
   background-repeat: no-repeat;
+  transition: background-image 0.8s ease-in-out;
 }
