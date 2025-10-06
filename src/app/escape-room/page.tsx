@@ -1,5 +1,5 @@
-export default function CodingRacesPage() {
-  return <h1>Coding Races</h1>
+export default function EscapeRoomPage() {
+  return <h1>Escape Room</h1>
 }
 
 

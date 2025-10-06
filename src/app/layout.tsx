@@ -28,7 +28,7 @@ export default function RootLayout({
               defaultTheme="system"
               enableSystem
               disableTransitionOnChange
-              storageType="cookie"
+              storage="cookie"
             >
               <Header />
               {children}
