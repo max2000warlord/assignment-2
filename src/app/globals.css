@@ -6,7 +6,6 @@
 :root {
   /* Light mode - Softer synthwave palette */
   --background-image: url('../../public/synthwave-cityscape.jpg');
-  --background-size: contain;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

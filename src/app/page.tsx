@@ -69,7 +69,7 @@ export default function Home() {
               icon={<Calendar className="h-8 w-8" />}
               title="Calendar"
               description="Important dates and deadlines"
-              color="var(--neon-magenta)"
+              color="var(--neon-pink)"
             />
             <NavigationCard
               href="/resources"
