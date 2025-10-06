@@ -139,18 +139,3 @@
   --color-neon-yellow: var(--neon-yellow);
   --color-neon-green: var(--neon-green);
 }
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-/* Transparent footer styling */
-.fixed.bottom-0.left-1\/2,
-.fixed.top-2.left-2 {
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-}

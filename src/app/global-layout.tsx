@@ -2,23 +2,14 @@
 import { useState } from 'react'
 import { SlideMenu } from '@/components/slide-menu'
 import { ThemeToggle } from '@/components/theme-toggle'
+import StdNo from '@/components/Footer'
 import { Menu, BookOpen, FileText, BarChart3, Calendar, FolderOpen, Wrench } from "lucide-react"
 export function GlobalLayout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <>
-      <BookOpen className="h-8 w-8" style={{ color: "var(--neon-cyan)" }} />
-      <h1
-        className="text-xl font-bold font-mono"
-        style={{
-          color: "var(--neon-cyan)",
-          textShadow: "0 0 15px var(--neon-cyan), 0 0 35px var(--neon-cyan)",
-        }}
-      >
-        Matthew Anderson<br />
-        21988151
-      </h1>
+      <StdNo />
       <div className="fixed top-4 right-4 z-50 flex items-center gap-4">
         <ThemeToggle />
         <button
