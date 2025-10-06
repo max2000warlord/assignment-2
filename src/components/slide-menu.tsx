@@ -67,7 +67,7 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
             <Link
               href="/"
               onClick={onClose}
-              className={`flex items-center gap-4 px-4 py-3 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/') ? 'bg-[var(--neon-cyan)]/20' : 'hover:bg-[var(--neon-cyan)]/10'
+              className={`flex items-center gap-4 px-4 py-1 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/') ? 'bg-[var(--neon-cyan)]/20' : 'hover:bg-[var(--neon-cyan)]/10'
                 }`}
               style={{ color: 'var(--neon-cyan)' }}
             >

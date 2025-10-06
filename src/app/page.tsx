@@ -11,34 +11,34 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: "url('/synthwave-cityscape.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
+    <div>
 
       <div className="relative z-7">
         {/* Header */}
 
         {/* Main Content */}
         <main className="container mx-auto px-4 py-12">
-          <section className="text-center mb-16">
-            <h2
-              className="text-5xl md:text-6xl font-bold mb-6 font-mono"
-              style={{
-                background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                filter: "drop-shadow(0 0 20px var(--neon-pink))",
-              }}
-            >
-              Welcome to LTU Moodle App
-            </h2>
+          <section className="relative w-full py-20 flex items-center justify-center">
+            {/* Background image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-fixed"
+            />
+
+            {/* Semi-transparent frosted glass panel */}
+            <div className="relative z-10 p-10 md:p-20 bg-black/50 backdrop-blur-lg rounded-xl text-center max-w-3xl mx-auto">
+              <h1
+                className="text-4xl md:text-6xl font-bold font-mono mb-6"
+                style={{
+                  background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  filter: "drop-shadow(0 0 20px var(--neon-pink)) drop-shadow(0 0 40px var(--neon-cyan))",
+                }}
+              >
+                Welcome to LTU Moodle App
+              </h1>
+            </div>
           </section>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">

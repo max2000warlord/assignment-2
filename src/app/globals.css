@@ -52,6 +52,10 @@
 
 .dark {
   /* Dark mode - True synthwave neon aesthetic matching the cityscape */
+  --background-image: url('../../public/synthwave-cityscape-dark.jpg');
+  --background-size: cover;
+  --background-position: center;
+  --background-attachment: fixed;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
