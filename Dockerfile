@@ -1,8 +1,8 @@
-FROM oven/bun:1 AS base
+FROM docker.io/oven/bun:1 AS base
 WORKDIR /app
 
 COPY package.json bun.lockb* ./
-RUN bun install --frozen-lockfile
+RUN bun install
 
 FROM base AS dev
 COPY . .
