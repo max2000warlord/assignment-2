@@ -146,7 +146,7 @@ for (let person of data) {
         body {
             font-family: 'Courier New', monospace;
             background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            color: #00ff41;
+            color: oklch(0.75 0.2 195);
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -157,20 +157,20 @@ for (let person of data) {
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
-            border: 2px solid #00ff41;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            border: 2px solid oklch(0.75 0.2 195);
+            box-shadow: 0 0 20px oklch(0.75 0.2 195 / 0.3);
         }
         h1 {
             text-align: center;
-            color: #ff0080;
-            text-shadow: 0 0 10px #ff0080;
+            color: oklch(0.7 0.3 340);
+            text-shadow: 0 0 10px oklch(0.7 0.3 340);
             margin-bottom: 20px;
         }
         .code-block {
             background: #000;
             padding: 15px;
             border-radius: 5px;
-            border: 1px solid #00ff41;
+            border: 1px solid oklch(0.75 0.2 195);
             margin: 10px 0;
             white-space: pre-wrap;
             overflow-x: auto;
@@ -180,29 +180,26 @@ for (let person of data) {
             top: 10px;
             left: 10px;
             background: rgba(0, 0, 0, 0.9);
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #00ff41;
-            color: #00ff41;
-            font-size: 14px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid oklch(0.7 0.3 340);
+            color: oklch(0.7 0.3 340);
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 0 15px oklch(0.7 0.3 340 / 0.5);
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
-    <div class="student-info">
-        Student: max2000warlord<br>
-        Date: 2025-10-06<br>
-        Assignment 2 - Escape Room
-    </div>
-    
     <div class="container">
         <h1>🚪 Escape Room - Completed Challenges</h1>
         <p>Successfully completed ${completedStages.length} out of ${stages.length} coding challenges!</p>
         
         <div class="code-block">${completedCode}</div>
         
-        <p style="text-align: center; margin-top: 20px; color: #ff0080;">
-            Generated on 2025-10-06 14:22:47 UTC
+        <p style="text-align: center; margin-top: 20px; color: oklch(0.7 0.3 340);">
+            Generated on 2025-10-06 14:39:26 UTC
         </p>
     </div>
 
@@ -234,42 +231,87 @@ for (let person of data) {
   }
 
   return (
-    <div className="min-h-screen bg-cover bg-center" style={{
-      backgroundImage: 'linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9), rgba(15, 52, 96, 0.9)), url("/escape-room-bg.jpg")'
-    }}>
-      <div className="absolute top-4 left-4 text-green-400 text-xl font-bold bg-black/80 p-3 rounded border-2 border-green-400">
-        Student: max2000warlord<br />
-        Date: 2025-10-06<br />
-        Assignment 2 - Escape Room
-      </div>
-
-      <div className="container mx-auto px-4 py-8" style={{ paddingTop: '120px' }}>
-        <h1 className="text-4xl font-bold text-center mb-8 text-pink-500" style={{
-          textShadow: '0 0 20px #ff0080'
-        }}>
-          🚪 Code Escape Room
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{
+        position: 'relative'
+      }}
+    >
+      <div className="container mx-auto px-4 py-8" style={{ paddingTop: '140px' }}>
+        <h1
+          style={{
+            fontSize: '3.5rem',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            marginBottom: '2rem',
+            background: 'linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            filter: 'drop-shadow(0 0 20px var(--neon-pink)) drop-shadow(0 0 40px var(--neon-cyan))',
+            fontFamily: 'monospace'
+          }}
+        >
+          🚪 CODE ESCAPE ROOM
         </h1>
 
         {/* Timer */}
-        <div className="text-center mb-8">
-          <div className="text-3xl text-green-400 mb-4" style={{
-            fontFamily: 'monospace',
-            textShadow: '0 0 10px #00ff41'
-          }}>
+        <div
+          style={{
+            textAlign: 'center',
+            marginBottom: '2rem',
+            padding: '20px',
+            background: 'rgba(0, 0, 0, 0.8)',
+            borderRadius: '15px',
+            border: '2px solid var(--neon-cyan)',
+            boxShadow: '0 0 30px oklch(0.75 0.2 195 / 0.3)'
+          }}
+        >
+          <div
+            style={{
+              fontSize: '2.5rem',
+              color: timeRemaining < 120 ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+              marginBottom: '1rem',
+              fontFamily: 'monospace',
+              textShadow: `0 0 10px ${timeRemaining < 120 ? 'var(--neon-pink)' : 'var(--neon-cyan)'}`,
+              fontWeight: 'bold'
+            }}
+          >
             ⏱️ Time: {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
           </div>
-          <div className="flex gap-4 justify-center">
+          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
             <button
               onClick={() => setIsTimerRunning(!isTimerRunning)}
               disabled={isCompleted || timeRemaining === 0}
-              className="px-6 py-3 bg-green-500 hover:bg-green-600 text-black rounded font-bold shadow-lg"
-              style={{ boxShadow: '0 0 15px rgba(0, 255, 65, 0.5)' }}
+              style={{
+                padding: '12px 24px',
+                background: isTimerRunning ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+                color: '#000',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                boxShadow: `0 0 15px ${isTimerRunning ? 'oklch(0.7 0.3 340 / 0.5)' : 'oklch(0.75 0.2 195 / 0.5)'}`,
+                transition: 'all 0.3s ease'
+              }}
             >
               {isTimerRunning ? '⏸️ Pause' : '▶️ Start'} Timer
             </button>
             <button
               onClick={resetTimer}
-              className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-black rounded font-bold"
+              style={{
+                padding: '12px 24px',
+                background: 'var(--neon-orange)',
+                color: '#000',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                boxShadow: '0 0 15px oklch(0.75 0.25 45 / 0.5)',
+                transition: 'all 0.3s ease'
+              }}
             >
               🔄 Reset
             </button>
@@ -278,15 +320,43 @@ for (let person of data) {
 
         {!isCompleted ? (
           /* Current Stage */
-          <Card className="max-w-4xl mx-auto p-6 bg-black/90 text-green-400 border-2 border-green-400" style={{
-            boxShadow: '0 0 30px rgba(0, 255, 65, 0.3)'
-          }}>
-            <h2 className="text-3xl mb-4 text-pink-500" style={{ textShadow: '0 0 10px #ff0080' }}>
+          <Card
+            style={{
+              maxWidth: '1000px',
+              margin: '0 auto',
+              padding: '30px',
+              background: 'rgba(0, 0, 0, 0.9)',
+              color: 'var(--neon-cyan)',
+              borderRadius: '15px',
+              border: '2px solid var(--neon-cyan)',
+              boxShadow: '0 0 30px oklch(0.75 0.2 195 / 0.3)'
+            }}
+          >
+            <h2
+              style={{
+                fontSize: '2rem',
+                marginBottom: '1rem',
+                color: 'var(--neon-pink)',
+                textShadow: '0 0 10px var(--neon-pink)',
+                fontFamily: 'monospace'
+              }}
+            >
               Stage {currentStage}/{stages.length}: {stages[currentStage - 1]?.title}
             </h2>
-            <p className="mb-4 text-lg">{stages[currentStage - 1]?.description}</p>
+            <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--neon-cyan)' }}>
+              {stages[currentStage - 1]?.description}
+            </p>
 
-            <div className="mb-4 p-3 bg-green-900/30 border border-green-400 rounded">
+            <div
+              style={{
+                marginBottom: '1.5rem',
+                padding: '15px',
+                background: 'rgba(22, 33, 62, 0.5)',
+                border: '1px solid var(--neon-purple)',
+                borderRadius: '8px',
+                color: 'var(--neon-purple)'
+              }}
+            >
               💡 <strong>Hint:</strong> {stages[currentStage - 1]?.hint}
             </div>
 
@@ -294,58 +364,136 @@ for (let person of data) {
             <textarea
               value={userCode}
               onChange={(e) => setUserCode(e.target.value)}
-              className="w-full h-64 p-4 bg-black text-green-400 font-mono border-2 border-green-400 rounded"
+              style={{
+                width: '100%',
+                height: '300px',
+                padding: '15px',
+                background: '#000',
+                color: 'var(--neon-cyan)',
+                fontFamily: 'Monaco, Consolas, "Courier New", monospace',
+                fontSize: '14px',
+                border: '2px solid var(--neon-cyan)',
+                borderRadius: '8px',
+                resize: 'vertical',
+                outline: 'none'
+              }}
               placeholder="Write your code here..."
-              style={{ fontSize: '14px' }}
             />
 
-            <div className="flex items-center gap-4 mt-4">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginTop: '20px' }}>
               <button
                 onClick={checkSolution}
                 disabled={!isTimerRunning || timeRemaining === 0}
-                className="px-6 py-3 bg-green-500 hover:bg-green-600 text-black rounded font-bold"
-                style={{ boxShadow: '0 0 15px rgba(0, 255, 65, 0.5)' }}
+                style={{
+                  padding: '15px 30px',
+                  background: 'var(--neon-cyan)',
+                  color: '#000',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  boxShadow: '0 0 15px oklch(0.75 0.2 195 / 0.5)',
+                  transition: 'all 0.3s ease'
+                }}
               >
                 🚀 Submit Solution
               </button>
 
               {feedback && (
-                <div className={`px-4 py-2 rounded border ${feedback.includes('Correct') || feedback.includes('Congratulations')
-                    ? 'bg-green-900/50 border-green-400 text-green-400'
-                    : feedback.includes('copied')
-                      ? 'bg-blue-900/50 border-blue-400 text-blue-400'
-                      : 'bg-red-900/50 border-red-400 text-red-400'
-                  }`}>
+                <div
+                  style={{
+                    padding: '12px 20px',
+                    borderRadius: '8px',
+                    border: `2px solid ${feedback.includes('Correct') || feedback.includes('Congratulations')
+                      ? 'var(--neon-cyan)'
+                      : feedback.includes('copied')
+                        ? 'var(--neon-purple)'
+                        : 'var(--neon-pink)'
+                      }`,
+                    background: 'rgba(0, 0, 0, 0.8)',
+                    color: feedback.includes('Correct') || feedback.includes('Congratulations')
+                      ? 'var(--neon-cyan)'
+                      : feedback.includes('copied')
+                        ? 'var(--neon-purple)'
+                        : 'var(--neon-pink)',
+                    boxShadow: `0 0 15px ${feedback.includes('Correct') || feedback.includes('Congratulations')
+                      ? 'oklch(0.75 0.2 195 / 0.5)'
+                      : feedback.includes('copied')
+                        ? 'oklch(0.65 0.28 290 / 0.5)'
+                        : 'oklch(0.7 0.3 340 / 0.5)'
+                      }`
+                  }}
+                >
                   {feedback}
                 </div>
               )}
             </div>
 
             {/* Progress */}
-            <div className="mt-6">
-              <div className="text-green-400 mb-2">
+            <div style={{ marginTop: '25px' }}>
+              <div style={{ marginBottom: '10px', color: 'var(--neon-cyan)', fontSize: '16px' }}>
                 Progress: {completedStages.length}/{stages.length} stages completed
               </div>
-              <div className="w-full bg-gray-700 rounded-full h-3">
+              <div
+                style={{
+                  width: '100%',
+                  height: '12px',
+                  background: '#333',
+                  borderRadius: '6px',
+                  overflow: 'hidden',
+                  border: '1px solid var(--neon-purple)'
+                }}
+              >
                 <div
-                  className="bg-gradient-to-r from-green-400 to-pink-500 h-3 rounded-full transition-all duration-500"
-                  style={{ width: `${(completedStages.length / stages.length) * 100}%` }}
-                ></div>
+                  style={{
+                    width: `${(completedStages.length / stages.length) * 100}%`,
+                    height: '100%',
+                    background: 'linear-gradient(90deg, var(--neon-cyan), var(--neon-pink))',
+                    transition: 'width 0.5s ease',
+                    boxShadow: '0 0 10px var(--neon-cyan)'
+                  }}
+                />
               </div>
             </div>
           </Card>
         ) : (
           /* Completion Screen */
-          <Card className="max-w-4xl mx-auto p-8 bg-black/90 text-center border-2 border-green-400" style={{
-            boxShadow: '0 0 30px rgba(0, 255, 65, 0.5)'
-          }}>
-            <h2 className="text-5xl text-green-400 mb-6" style={{ textShadow: '0 0 20px #00ff41' }}>
+          <Card
+            style={{
+              maxWidth: '1000px',
+              margin: '0 auto',
+              padding: '40px',
+              background: 'rgba(0, 0, 0, 0.9)',
+              textAlign: 'center',
+              borderRadius: '15px',
+              border: '2px solid var(--neon-cyan)',
+              boxShadow: '0 0 30px oklch(0.75 0.2 195 / 0.5)'
+            }}
+          >
+            <h2
+              style={{
+                fontSize: '3.5rem',
+                color: 'var(--neon-cyan)',
+                textShadow: '0 0 20px var(--neon-cyan)',
+                marginBottom: '1.5rem',
+                fontFamily: 'monospace'
+              }}
+            >
               🎉 FREEDOM ACHIEVED! 🎉
             </h2>
-            <p className="text-2xl text-pink-500 mb-6">
+            <p style={{ fontSize: '1.8rem', color: 'var(--neon-pink)', marginBottom: '2rem' }}>
               You've successfully completed all coding challenges and escaped the room!
             </p>
-            <div className="bg-green-900/30 p-4 rounded border border-green-400 text-green-400">
+            <div
+              style={{
+                background: 'rgba(22, 33, 62, 0.5)',
+                padding: '20px',
+                borderRadius: '10px',
+                border: '1px solid var(--neon-cyan)',
+                color: 'var(--neon-cyan)'
+              }}
+            >
               <strong>Final Stats:</strong><br />
               Time Used: {Math.floor((600 - timeRemaining) / 60)}:{((600 - timeRemaining) % 60).toString().padStart(2, '0')}<br />
               Stages Completed: {completedStages.length}/{stages.length}<br />
@@ -355,24 +503,62 @@ for (let person of data) {
         )}
 
         {/* Generated HTML Output */}
-        <Card className="max-w-4xl mx-auto mt-8 p-6 bg-black/90 border-2 border-pink-500" style={{
-          boxShadow: '0 0 20px rgba(255, 0, 128, 0.3)'
-        }}>
-          <h3 className="text-2xl mb-4 text-pink-500" style={{ textShadow: '0 0 10px #ff0080' }}>
+        <Card
+          style={{
+            maxWidth: '1000px',
+            margin: '30px auto 0',
+            padding: '25px',
+            background: 'rgba(0, 0, 0, 0.9)',
+            borderRadius: '15px',
+            border: '2px solid var(--neon-pink)',
+            boxShadow: '0 0 30px oklch(0.7 0.3 340 / 0.3)'
+          }}
+        >
+          <h3
+            style={{
+              fontSize: '1.8rem',
+              marginBottom: '15px',
+              color: 'var(--neon-pink)',
+              textShadow: '0 0 10px var(--neon-pink)',
+              fontFamily: 'monospace'
+            }}
+          >
             📝 Generated HTML + JS Code:
           </h3>
-          <p className="mb-4 text-green-400">
+          <p style={{ marginBottom: '15px', color: 'var(--neon-cyan)', fontSize: '16px' }}>
             Copy this code and paste it into a .html file to run independently:
           </p>
           <textarea
             readOnly
             value={generateHTML()}
-            className="w-full h-40 p-4 bg-gray-900 text-green-400 font-mono text-sm border border-pink-500 rounded"
+            style={{
+              width: '100%',
+              height: '200px',
+              padding: '15px',
+              background: '#111',
+              color: 'var(--neon-cyan)',
+              fontFamily: 'Monaco, Consolas, "Courier New", monospace',
+              fontSize: '12px',
+              border: '1px solid var(--neon-pink)',
+              borderRadius: '5px',
+              resize: 'vertical'
+            }}
           />
           <button
             onClick={copyToClipboard}
-            className="mt-4 px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded font-bold"
-            style={{ boxShadow: '0 0 15px rgba(255, 0, 128, 0.5)' }}
+            style={{
+              marginTop: '15px',
+              padding: '12px 24px',
+              background: 'var(--neon-pink)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              boxShadow: '0 0 15px oklch(0.7 0.3 340 / 0.5)',
+              transition: 'all 0.3s ease'
+            }}
           >
             📋 Copy to Clipboard
           </button>
@@ -380,4 +566,4 @@ for (let person of data) {
       </div>
     </div>
   )
-}
+} 

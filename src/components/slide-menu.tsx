@@ -76,9 +76,8 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
             </Link>
 
             <MenuItem icon={<Zap />} label="Features" color="var(--neon-yellow)" />
-
             <Link
-              href="/tools/tabs-generator"
+              href="/tabs-generator"
               onClick={onClose}
               className={`flex items-center gap-4 px-4 py-3 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/tools/tabs-generator')
                 ? 'bg-[var(--neon-pink)]/20'
@@ -88,9 +87,8 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
             >
               🔖 Tabs Generator
             </Link>
-
             <Link
-              href="/tools/tabs-generator"
+              href="/escape-room"
               onClick={onClose}
               className={`flex items-center gap-4 px-4 py-3 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/tools/tabs-generator')
                 ? 'bg-[var(--neon-pink)]/20'
@@ -98,7 +96,7 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
                 }`}
               style={{ color: 'var(--neon-pink)' }}
             >
-              🔖 Tabs Generator
+              🔖 Escape Room
             </Link>
             <MenuItem icon={<Radio />} label="Broadcast" color="var(--neon-orange)" />
             <MenuItem icon={<User />} label="Profile" color="var(--neon-green)" />
