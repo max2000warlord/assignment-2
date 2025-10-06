@@ -28,7 +28,7 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
 
       {/* Slide Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-card border-l-2 shadow-2xl transform transition-transform duration-300 ease-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-2 right-0 h-full w-80 bg-card/50 border-l-2 shadow-2xl transform transition-transform duration-300 ease-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         style={{
           borderColor: 'var(--neon-purple)',
@@ -38,7 +38,7 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
       >
         <div className="flex flex-col h-full p-6">
           {/* Header */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex  items-center justify-between mb-8">
             <h2
               className="text-2xl font-bold font-mono"
               style={{
@@ -89,6 +89,17 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
               🔖 Tabs Generator
             </Link>
 
+            <Link
+              href="/tools/tabs-generator"
+              onClick={onClose}
+              className={`flex items-center gap-4 px-4 py-3 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/tools/tabs-generator')
+                ? 'bg-[var(--neon-pink)]/20'
+                : 'hover:bg-[var(--neon-pink)]/10'
+                }`}
+              style={{ color: 'var(--neon-pink)' }}
+            >
+              🔖 Tabs Generator
+            </Link>
             <MenuItem icon={<Radio />} label="Broadcast" color="var(--neon-orange)" />
             <MenuItem icon={<User />} label="Profile" color="var(--neon-green)" />
             <MenuItem icon={<Settings />} label="Settings" color="var(--neon-pink)" />
