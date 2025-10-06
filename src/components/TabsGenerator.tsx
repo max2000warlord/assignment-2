@@ -1,6 +1,8 @@
-'use client'
-import { useState } from 'react'
+"use client"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Wrench } from "lucide-react"
 
 interface Tab {
   id: string
@@ -10,29 +12,27 @@ interface Tab {
 
 export default function TabsGenerator() {
   const [tabs, setTabs] = useState<Tab[]>([
-    { id: '1', label: 'Tab 1', content: 'Content for tab 1' },
-    { id: '2', label: 'Tab 2', content: 'Content for tab 2' }
+    { id: "1", label: "Tab 1", content: "Content for tab 1" },
+    { id: "2", label: "Tab 2", content: "Content for tab 2" },
   ])
-  const [generatedCode, setGeneratedCode] = useState('')
+  const [generatedCode, setGeneratedCode] = useState("")
   const [showPreview, setShowPreview] = useState(false)
   const [activePreviewTab, setActivePreviewTab] = useState(0)
   const addTab = () => {
     const newTab = {
       id: Date.now().toString(),
       label: `Tab ${tabs.length + 1}`,
-      content: `Content for tab ${tabs.length + 1}`
+      content: `Content for tab ${tabs.length + 1}`,
     }
     setTabs([...tabs, newTab])
   }
 
   const removeTab = (id: string) => {
-    setTabs(tabs.filter(tab => tab.id !== id))
+    setTabs(tabs.filter((tab) => tab.id !== id))
   }
 
-  const updateTab = (id: string, field: 'label' | 'content', value: string) => {
-    setTabs(tabs.map(tab =>
-      tab.id === id ? { ...tab, [field]: value } : tab
-    ))
+  const updateTab = (id: string, field: "label" | "content", value: string) => {
+    setTabs(tabs.map((tab) => (tab.id === id ? { ...tab, [field]: value } : tab)))
   }
 
   const generateCode = () => {
@@ -41,7 +41,7 @@ export default function TabsGenerator() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Tabs</title>
+    <title>Synthwave Tabs</title>
     <style>
         * {
             margin: 0;
@@ -49,22 +49,25 @@ export default function TabsGenerator() {
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
             padding: 20px;
-            background: #f0f0f0;
+            background: linear-gradient(180deg, #1a0033 0%, #0d001a 100%);
+            min-height: 100vh;
         }
         .tabs-container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(13, 0, 26, 0.8);
+            border-radius: 12px;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
         }
         .tab-buttons {
             display: flex;
-            background: #e0e0e0;
-            border-radius: 8px 8px 0 0;
+            background: rgba(26, 0, 51, 0.6);
+            border-radius: 10px 10px 0 0;
             overflow: hidden;
+            border-bottom: 2px solid #ff00ff;
         }
         .tab-button {
             flex: 1;
@@ -73,43 +76,61 @@ export default function TabsGenerator() {
             border: none;
             cursor: pointer;
             font-size: 16px;
-            transition: background 0.3s;
+            font-family: 'Courier New', monospace;
+            color: #00ffff;
+            transition: all 0.3s;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         .tab-button:hover {
-            background: #d0d0d0;
+            background: rgba(255, 0, 255, 0.2);
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
         }
         .tab-button.active {
-            background: white;
+            background: rgba(255, 0, 255, 0.3);
+            color: #ff00ff;
             font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 1);
+            border-bottom: 3px solid #ff00ff;
         }
         .tab-content {
-            padding: 20px;
+            padding: 30px;
             min-height: 200px;
+            color: #00ffff;
         }
         .tab-panel {
             display: none;
         }
         .tab-panel.active {
             display: block;
-            animation: fadeIn 0.3s;
+            animation: fadeIn 0.3s, glow 2s ease-in-out infinite;
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
         }
     </style>
 </head>
 <body>
     <div class="tabs-container">
         <div class="tab-buttons">
-            ${tabs.map((tab, index) =>
-      `<button class="tab-button${index === 0 ? ' active' : ''}" data-tab="${index}">${tab.label}</button>`
-    ).join('\n            ')}
+            ${tabs
+        .map(
+          (tab, index) =>
+            `<button class="tab-button${index === 0 ? " active" : ""}" data-tab="${index}">${tab.label}</button>`,
+        )
+        .join("\n            ")}
         </div>
         <div class="tab-content">
-            ${tabs.map((tab, index) =>
-      `<div class="tab-panel${index === 0 ? ' active' : ''}" data-panel="${index}">${tab.content}</div>`
-    ).join('\n            ')}
+            ${tabs
+        .map(
+          (tab, index) =>
+            `<div class="tab-panel${index === 0 ? " active" : ""}" data-panel="${index}">${tab.content}</div>`,
+        )
+        .join("\n            ")}
         </div>
     </div>
     
@@ -122,11 +143,9 @@ export default function TabsGenerator() {
                 button.addEventListener('click', function() {
                     const tabIndex = this.getAttribute('data-tab');
                     
-                    // Remove active class from all buttons and panels
                     buttons.forEach(btn => btn.classList.remove('active'));
                     panels.forEach(panel => panel.classList.remove('active'));
                     
-                    // Add active class to clicked button and corresponding panel
                     this.classList.add('active');
                     document.querySelector('[data-panel="' + tabIndex + '"]').classList.add('active');
                 });
@@ -141,104 +160,286 @@ export default function TabsGenerator() {
 
   const copyCode = () => {
     navigator.clipboard.writeText(generatedCode)
-    alert('Code copied to clipboard!')
+    alert("Code copied to clipboard!")
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Tabs Generator</h1>
+    <div
+      className="min-h-screen relative"
+      style={{
+        backgroundImage: "url('/synthwave-cityscape.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Configuration Panel */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Configure Tabs</h2>
+      <div className="relative z-10">
+        <header
+          className="border-b-2 backdrop-blur-md bg-black/30 sticky top-0 z-30"
+          style={{ borderColor: "var(--neon-cyan)" }}
+        >
+          <div className="container mx-auto px-4 py-4 flex items-center gap-3">
+            <Wrench className="h-8 w-8" style={{ color: "var(--neon-pink)" }} />
+            <h1
+              className="text-2xl font-bold font-mono"
+              style={{
+                color: "var(--neon-pink)",
+                textShadow: "0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink)",
+              }}
+            >
+              TABS GENERATOR
+            </h1>
+          </div>
+        </header>
 
-          {tabs.map(tab => (
-            <div key={tab.id} className="border p-4 rounded-lg space-y-2">
-              <input
-                type="text"
-                value={tab.label}
-                onChange={(e) => updateTab(tab.id, 'label', e.target.value)}
-                className="w-full p-2 border rounded bg-background text-foreground dark:border-gray-700"
-                placeholder="Tab label"
-              />
-              <textarea
-                value={tab.content}
-                onChange={(e) => updateTab(tab.id, 'content', e.target.value)}
-                className="w-full p-2 border rounded bg-background text-foreground dark:border-gray-700"
-                rows={3}
-                placeholder="Tab content"
-              />
-              <Button
-                variant="destructive"
-                size="sm"
-                onClick={() => removeTab(tab.id)}
-                disabled={tabs.length <= 1}
+        <main className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card
+              className="p-6 border-2 backdrop-blur-md space-y-4"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                borderColor: "var(--neon-cyan)",
+                boxShadow: "0 0 15px var(--neon-cyan)",
+              }}
+            >
+              <h2
+                className="text-2xl font-semibold font-mono mb-4"
+                style={{
+                  color: "var(--neon-cyan)",
+                  textShadow: "0 0 10px var(--neon-cyan)",
+                }}
               >
-                Remove Tab
-              </Button>
-            </div>
-          ))}
+                Configure Tabs
+              </h2>
 
-          <Button onClick={addTab} className="w-full">Add New Tab</Button>
-          <Button
-            onClick={() => setShowPreview(!showPreview)}
-            variant="outline"
-            className="w-full"
-          >
-            {showPreview ? 'Hide' : 'Show'} Live Preview
-          </Button>
-          <Button onClick={generateCode} variant="default" className="w-full">
-            Generate HTML Code
-          </Button>
-        </div>
-
-        {/* Generated Code Display */}
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Generated Code</h2>
-            {generatedCode && (
-              <Button onClick={copyCode} size="sm">Copy Code</Button>
-            )}
-          </div>
-
-          {generatedCode && (
-            <pre className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-mono text-sm p-4 rounded-lg overflow-x-auto">
-              <code className="text-sm">{generatedCode}</code>
-            </pre>
-          )}
-        </div>
-      </div>
-      {/* ADD THIS LIVE PREVIEW SECTION HERE - Right before the last closing </div> */}
-      {showPreview && tabs.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Live Preview</h2>
-          <div className="border dark:border-gray-700 rounded-lg overflow-hidden">
-            {/* Tab Buttons */}
-            <div className="flex bg-gray-100 dark:bg-gray-800">
-              {tabs.map((tab, index) => (
-                <button
+              {tabs.map((tab) => (
+                <div
                   key={tab.id}
-                  onClick={() => setActivePreviewTab(index)}
-                  className={`flex-1 px-4 py-3 transition-all ${activePreviewTab === index
-                    ? 'bg-white dark:bg-gray-900 font-semibold border-b-2 border-blue-500'
-                    : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
+                  className="border-2 backdrop-blur-sm p-4 rounded-lg space-y-3 transition-all"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    borderColor: "var(--neon-magenta)",
+                    boxShadow: "0 0 10px var(--neon-magenta)",
+                  }}
                 >
-                  {tab.label || `Tab ${index + 1}`}
-                </button>
+                  <input
+                    type="text"
+                    value={tab.label}
+                    onChange={(e) => updateTab(tab.id, "label", e.target.value)}
+                    className="w-full p-3 border-2 rounded backdrop-blur-sm focus:outline-none transition-all font-mono"
+                    style={{
+                      backgroundColor: "rgba(0, 0, 0, 0.6)",
+                      borderColor: "var(--neon-cyan)",
+                      color: "var(--neon-cyan)",
+                    }}
+                    placeholder="Tab label"
+                  />
+                  <textarea
+                    value={tab.content}
+                    onChange={(e) => updateTab(tab.id, "content", e.target.value)}
+                    className="w-full p-3 border-2 rounded backdrop-blur-sm focus:outline-none transition-all resize-none"
+                    style={{
+                      backgroundColor: "rgba(0, 0, 0, 0.6)",
+                      borderColor: "var(--neon-cyan)",
+                      color: "rgba(255, 255, 255, 0.9)",
+                    }}
+                    rows={3}
+                    placeholder="Tab content"
+                  />
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => removeTab(tab.id)}
+                    disabled={tabs.length <= 1}
+                    className="border-2 transition-all"
+                    style={{
+                      backgroundColor: "rgba(220, 38, 38, 0.8)",
+                      borderColor: "#ef4444",
+                      boxShadow: "0 0 10px #ef4444",
+                    }}
+                  >
+                    Remove Tab
+                  </Button>
+                </div>
               ))}
-            </div>
 
-            {/* Tab Content */}
-            <div className="bg-white dark:bg-gray-900 p-6 min-h-[200px]">
-              <div className="animate-in fade-in duration-300">
-                {tabs[activePreviewTab]?.content || 'No content'}
+              <Button
+                onClick={addTab}
+                className="w-full border-2 transition-all font-bold"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  borderColor: "var(--neon-cyan)",
+                  color: "var(--neon-cyan)",
+                  boxShadow: "0 0 15px var(--neon-cyan)",
+                }}
+              >
+                Add New Tab
+              </Button>
+              <Button
+                onClick={() => setShowPreview(!showPreview)}
+                variant="outline"
+                className="w-full border-2 transition-all"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  borderColor: "var(--neon-magenta)",
+                  color: "var(--neon-magenta)",
+                  boxShadow: "0 0 15px var(--neon-magenta)",
+                }}
+              >
+                {showPreview ? "Hide" : "Show"} Live Preview
+              </Button>
+              <Button
+                onClick={generateCode}
+                className="w-full border-2 transition-all font-bold"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  borderColor: "var(--neon-pink)",
+                  color: "var(--neon-pink)",
+                  boxShadow: "0 0 15px var(--neon-pink)",
+                }}
+              >
+                Generate HTML Code
+              </Button>
+            </Card>
+
+            <Card
+              className="p-6 border-2 backdrop-blur-md space-y-4"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                borderColor: "var(--neon-pink)",
+                boxShadow: "0 0 15px var(--neon-pink)",
+              }}
+            >
+              <div className="flex justify-between items-center">
+                <h2
+                  className="text-2xl font-semibold font-mono"
+                  style={{
+                    color: "var(--neon-pink)",
+                    textShadow: "0 0 10px var(--neon-pink)",
+                  }}
+                >
+                  Generated Code
+                </h2>
+                {generatedCode && (
+                  <Button
+                    onClick={copyCode}
+                    size="sm"
+                    className="border-2 transition-all font-bold"
+                    style={{
+                      backgroundColor: "rgba(0, 0, 0, 0.7)",
+                      borderColor: "var(--neon-cyan)",
+                      color: "var(--neon-cyan)",
+                      boxShadow: "0 0 10px var(--neon-cyan)",
+                    }}
+                  >
+                    Copy Code
+                  </Button>
+                )}
               </div>
-            </div>
+
+              {generatedCode ? (
+                <pre
+                  className="border-2 font-mono text-sm p-4 rounded-lg overflow-x-auto max-h-[600px] overflow-y-auto"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                    borderColor: "var(--neon-cyan)",
+                    color: "var(--neon-cyan)",
+                    boxShadow: "0 0 10px var(--neon-cyan)",
+                  }}
+                >
+                  <code className="text-sm">{generatedCode}</code>
+                </pre>
+              ) : (
+                <div
+                  className="border-2 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    borderColor: "var(--neon-magenta)",
+                    color: "rgba(255, 255, 255, 0.5)",
+                  }}
+                >
+                  Click "Generate HTML Code" to see the output
+                </div>
+              )}
+            </Card>
           </div>
-        </div>
-      )}
+
+          {showPreview && tabs.length > 0 && (
+            <Card
+              className="mt-8 p-6 border-2 backdrop-blur-md"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                borderColor: "var(--neon-purple)",
+                boxShadow: "0 0 15px var(--neon-purple)",
+              }}
+            >
+              <h2
+                className="text-2xl font-semibold mb-4 font-mono"
+                style={{
+                  color: "var(--neon-purple)",
+                  textShadow: "0 0 10px var(--neon-purple)",
+                }}
+              >
+                Live Preview
+              </h2>
+              <div
+                className="border-2 rounded-lg overflow-hidden backdrop-blur-sm"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  borderColor: "var(--neon-cyan)",
+                  boxShadow: "0 0 15px var(--neon-cyan)",
+                }}
+              >
+                {/* Tab Buttons */}
+                <div
+                  className="flex border-b-2"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.6)",
+                    borderColor: "var(--neon-magenta)",
+                  }}
+                >
+                  {tabs.map((tab, index) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActivePreviewTab(index)}
+                      className="flex-1 px-4 py-3 transition-all font-mono"
+                      style={{
+                        backgroundColor: activePreviewTab === index ? "rgba(255, 0, 255, 0.3)" : "transparent",
+                        color: activePreviewTab === index ? "var(--neon-magenta)" : "var(--neon-cyan)",
+                        borderBottom: activePreviewTab === index ? "3px solid var(--neon-magenta)" : "none",
+                        textShadow:
+                          activePreviewTab === index ? "0 0 20px var(--neon-magenta)" : "0 0 10px var(--neon-cyan)",
+                      }}
+                    >
+                      {tab.label || `Tab ${index + 1}`}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Tab Content */}
+                <div
+                  className="p-6 min-h-[200px]"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                  }}
+                >
+                  <div
+                    className="animate-in fade-in duration-300"
+                    style={{
+                      color: "rgba(255, 255, 255, 0.9)",
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.8)",
+                    }}
+                  >
+                    {tabs[activePreviewTab]?.content || "No content"}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          )}
+        </main>
+      </div>
     </div>
   )
 }

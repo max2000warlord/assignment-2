@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { ModeToggle } from '@/components/mode-toggle'
 import Cookies from 'js-cookie'
 import { usePathname } from 'next/navigation'
 import { useTheme } from "next-themes";
