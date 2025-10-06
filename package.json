@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
-    "@types/js-cookie": "^3.0.6",
     "add": "^2.0.6",
     "button": "^1.1.1",
     "class-variance-authority": "^0.7.1",
@@ -27,6 +26,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-burger-menu": "^2.8.7",

@@ -14,7 +14,8 @@ export default function TabsGenerator() {
     { id: '2', label: 'Tab 2', content: 'Content for tab 2' }
   ])
   const [generatedCode, setGeneratedCode] = useState('')
-
+  const [showPreview, setShowPreview] = useState(false)
+  const [activePreviewTab, setActivePreviewTab] = useState(0)
   const addTab = () => {
     const newTab = {
       id: Date.now().toString(),
@@ -158,13 +159,13 @@ export default function TabsGenerator() {
                 type="text"
                 value={tab.label}
                 onChange={(e) => updateTab(tab.id, 'label', e.target.value)}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded bg-background text-foreground dark:border-gray-700"
                 placeholder="Tab label"
               />
               <textarea
                 value={tab.content}
                 onChange={(e) => updateTab(tab.id, 'content', e.target.value)}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded bg-background text-foreground dark:border-gray-700"
                 rows={3}
                 placeholder="Tab content"
               />
@@ -180,6 +181,13 @@ export default function TabsGenerator() {
           ))}
 
           <Button onClick={addTab} className="w-full">Add New Tab</Button>
+          <Button
+            onClick={() => setShowPreview(!showPreview)}
+            variant="outline"
+            className="w-full"
+          >
+            {showPreview ? 'Hide' : 'Show'} Live Preview
+          </Button>
           <Button onClick={generateCode} variant="default" className="w-full">
             Generate HTML Code
           </Button>
@@ -201,6 +209,36 @@ export default function TabsGenerator() {
           )}
         </div>
       </div>
+      {/* ADD THIS LIVE PREVIEW SECTION HERE - Right before the last closing </div> */}
+      {showPreview && tabs.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold mb-4">Live Preview</h2>
+          <div className="border dark:border-gray-700 rounded-lg overflow-hidden">
+            {/* Tab Buttons */}
+            <div className="flex bg-gray-100 dark:bg-gray-800">
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActivePreviewTab(index)}
+                  className={`flex-1 px-4 py-3 transition-all ${activePreviewTab === index
+                      ? 'bg-white dark:bg-gray-900 font-semibold border-b-2 border-blue-500'
+                      : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    }`}
+                >
+                  {tab.label || `Tab ${index + 1}`}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content */}
+            <div className="bg-white dark:bg-gray-900 p-6 min-h-[200px]">
+              <div className="animate-in fade-in duration-300">
+                {tabs[activePreviewTab]?.content || 'No content'}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
