@@ -221,8 +221,8 @@ export default function TabsGenerator() {
                   key={tab.id}
                   onClick={() => setActivePreviewTab(index)}
                   className={`flex-1 px-4 py-3 transition-all ${activePreviewTab === index
-                      ? 'bg-white dark:bg-gray-900 font-semibold border-b-2 border-blue-500'
-                      : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    ? 'bg-white dark:bg-gray-900 font-semibold border-b-2 border-blue-500'
+                    : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
                     }`}
                 >
                   {tab.label || `Tab ${index + 1}`}

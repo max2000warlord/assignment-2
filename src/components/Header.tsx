@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import { ModeToggle } from '@/components/mode-toggle'
 import Cookies from 'js-cookie'
 import { usePathname } from 'next/navigation'
+import { useTheme } from "next-themes";
 
 // load react-burger-menu client-side only
 const Menu = dynamic(
@@ -14,43 +15,51 @@ const Menu = dynamic(
 )
 
 // SVG icons that use currentColor so they follow text color
-const BurgerIcon: React.FC = () => (
-  <div className="text-black dark:text-white" aria-hidden>
-    <svg
-      width="22"
-      height="16"
-      viewBox="0 0 22 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="block"
-    >
-      <rect x="0" y="1" width="22" height="2" rx="1" fill="currentColor" />
-      <rect x="0" y="7" width="22" height="2" rx="1" fill="currentColor" />
-      <rect x="0" y="13" width="22" height="2" rx="1" fill="currentColor" />
-    </svg>
-  </div>
-)
+const BurgerIcon: React.FC = () => {
+  const { theme } = useTheme();
+  const color = theme === "dark" ? "#fff" : "#000";
+  return (
+    <div aria-hidden>
+      <svg
+        width="22"
+        height="16"
+        viewBox="0 0 22 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="block"
+      >
+        <rect x="0" y="1" width="22" height="2" rx="1" fill="currentColor" />
+        <rect x="0" y="7" width="22" height="2" rx="1" fill="currentColor" />
+        <rect x="0" y="13" width="22" height="2" rx="1" fill="currentColor" />
+      </svg>
+    </div>
+  );
+};
 
-const CrossIcon: React.FC = () => (
-  <div className="text-black dark:text-white" aria-hidden>
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="block"
-    >
-      <path
-        d="M6 6L18 18M6 18L18 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </div>
-)
+const CrossIcon: React.FC = () => {
+  const { theme } = useTheme();
+  const color = theme === "dark" ? "#fff" : "#000";
+  return (
+    <div aria-hidden>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="block"
+      >
+        <path
+          d="M6 6L18 18M6 18L18 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+  );
+};
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
