@@ -83,7 +83,6 @@ export default function Header() {
 
   return (
     <header className="flex justify-end items-center gap-7 p-2 pr-10">
-      <ThemeToggle />
 
       <Menu
         right
@@ -91,7 +90,6 @@ export default function Header() {
         isOpen={menuOpen}
         onStateChange={handleStateChange}
         // use our SVG icons
-        customBurgerIcon={<BurgerIcon />}
         customCrossIcon={<CrossIcon />}
       >
         <Link id="home" className={isActive('/')} href="/" onClick={closeMenu}>🏠 Home</Link>
