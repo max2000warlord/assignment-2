@@ -139,3 +139,12 @@
   --color-neon-yellow: var(--neon-yellow);
   --color-neon-green: var(--neon-green);
 }
+
+
+body {
+  background-image: var(--background-image);
+  background-size: var(--background-size);
+  background-position: var(--background-position);
+  background-attachment: var(--background-attachment);
+  background-repeat: no-repeat;
+}
