@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Suspense } from 'react'
 import { GlobalLayout } from '@/app/global-layout'
 
+import { Menu, BookOpen, FileText, BarChart3, Calendar, FolderOpen, Wrench } from "lucide-react"
 export const metadata: Metadata = {
   title: "Synthwave UI",
   description: "Retro-futuristic synthwave interface",

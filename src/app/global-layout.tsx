@@ -9,7 +9,7 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
 
-      <div className="w-full py-2 flex items-center justify-start pl-4">
+      <div className="w-full py-2 flex  justify-start pl-4">
         <div className="flex items-center gap-3">
           <BookOpen className="h-8 w-8" style={{ color: "var(--neon-cyan)" }} />
           <h1

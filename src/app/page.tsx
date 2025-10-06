@@ -22,7 +22,9 @@ export default function Home() {
     >
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
-      <div className="relative z-10">
+      <div className="relative z-7">
+        {/* Header */}
+
         {/* Main Content */}
         <main className="container mx-auto px-4 py-12">
           <section className="text-center mb-16">

@@ -90,6 +90,7 @@ export default function Header() {
         isOpen={menuOpen}
         onStateChange={handleStateChange}
         // use our SVG icons
+        customBurgerIcon={<BurgerIcon />}
         customCrossIcon={<CrossIcon />}
       >
         <Link id="home" className={isActive('/')} href="/" onClick={closeMenu}>🏠 Home</Link>
