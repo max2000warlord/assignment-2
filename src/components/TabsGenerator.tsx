@@ -2,7 +2,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Wrench } from "lucide-react"
 
 interface Tab {
   id: string
@@ -18,6 +17,7 @@ export default function TabsGenerator() {
   const [generatedCode, setGeneratedCode] = useState("")
   const [showPreview, setShowPreview] = useState(false)
   const [activePreviewTab, setActivePreviewTab] = useState(0)
+
   const addTab = () => {
     const newTab = {
       id: Date.now().toString(),
@@ -176,25 +176,17 @@ export default function TabsGenerator() {
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
       <div className="relative z-10">
-        <header
-          className="border-b-2 backdrop-blur-md bg-black/30 sticky top-0 z-30"
-          style={{ borderColor: "var(--neon-cyan)" }}
-        >
-          <div className="container mx-auto px-4 py-4 flex items-center gap-3">
-            <Wrench className="h-8 w-8" style={{ color: "var(--neon-pink)" }} />
-            <h1
-              className="text-2xl font-bold font-mono"
-              style={{
-                color: "var(--neon-pink)",
-                textShadow: "0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink)",
-              }}
-            >
-              TABS GENERATOR
-            </h1>
-          </div>
-        </header>
-
         <main className="container mx-auto px-4 py-12">
+          <h1
+            className="text-4xl font-bold font-mono text-center mb-8"
+            style={{
+              color: "var(--neon-pink)",
+              textShadow: "0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink)",
+            }}
+          >
+            TABS GENERATOR
+          </h1>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card
               className="p-6 border-2 backdrop-blur-md space-y-4"
