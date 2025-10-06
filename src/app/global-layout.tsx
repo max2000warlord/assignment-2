@@ -8,27 +8,22 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-
-      <div className="w-full py-2 flex  justify-start pl-4">
-        <div className="flex items-center gap-3">
-          <BookOpen className="h-8 w-8" style={{ color: "var(--neon-cyan)" }} />
-          <h1
-            className="text-2xl font-bold font-mono"
-            style={{
-              color: "var(--neon-cyan)",
-              textShadow: "0 0 15px var(--neon-cyan), 0 0 35px var(--neon-cyan)",
-            }}
-          >
-            Matthew Anderson<br />
-            21988151
-          </h1>
-        </div>
-      </div>
+      <BookOpen className="h-8 w-8" style={{ color: "var(--neon-cyan)" }} />
+      <h1
+        className="text-xl font-bold font-mono"
+        style={{
+          color: "var(--neon-cyan)",
+          textShadow: "0 0 15px var(--neon-cyan), 0 0 35px var(--neon-cyan)",
+        }}
+      >
+        Matthew Anderson<br />
+        21988151
+      </h1>
       <div className="fixed top-4 right-4 z-50 flex items-center gap-4">
         <ThemeToggle />
         <button
           onClick={() => setIsMenuOpen(true)}
-          className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+          className="rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
           aria-label="Open menu"
         >
           <svg

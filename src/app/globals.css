@@ -6,7 +6,9 @@
 :root {
   /* Light mode - Softer synthwave palette */
   --background-image: url('../../public/synthwave-cityscape.jpg');
-  --background: oklch(1 0 0);
+  --background-size: cover;
+  --background-position: center;
+  --background-attachment: fixed;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -145,4 +147,10 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+/* Transparent footer styling */
+.fixed.bottom-0.left-1\/2,
+.fixed.top-2.left-2 {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
 }
