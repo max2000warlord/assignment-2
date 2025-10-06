@@ -175,7 +175,7 @@ export default function TabsGenerator() {
     >
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
-      <div className="relative z-10">
+      <div className="relative z-0">
         <main className="container mx-auto px-4 py-12">
           <h1
             className="text-4xl font-bold font-mono text-center mb-8"

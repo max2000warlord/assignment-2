@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import Cookies from 'js-cookie'
 import { usePathname } from 'next/navigation'
 import { useTheme } from "next-themes";
-
+import { ThemeToggle } from '@/components/theme-toggle'
 // load react-burger-menu client-side only
 const Menu = dynamic(
   () => import('react-burger-menu').then(mod => mod.slide),
@@ -83,7 +83,7 @@ export default function Header() {
 
   return (
     <header className="flex justify-end items-center gap-7 p-2 pr-10">
-      <ModeToggle />
+      <ThemeToggle />
 
       <Menu
         right
