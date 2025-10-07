@@ -2,9 +2,8 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { gradientDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { synthwaveStyle, synthwaveColors } from '@/lib/theme-utils';
 interface Tab {
   id: string
   label: string
@@ -335,7 +334,7 @@ export default function TabsGenerator() {
                 >
                   <SyntaxHighlighter
                     language="html"
-                    style={gradientDark}
+                    style={synthwaveStyle}
                     customStyle={{
                       margin: 0,
                       padding: '16px',
