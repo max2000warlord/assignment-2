@@ -16,6 +16,7 @@
   "dependencies": {
     "@prisma/client": "^6.16.3",
     "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.6",
     "@vercel/analytics": "^1.5.0",
     "add": "^2.0.6",
     "button": "^1.1.1",

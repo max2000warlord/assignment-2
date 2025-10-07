@@ -5,6 +5,9 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import StdNo from '@/components/Footer'
 import { MenuButton } from '@/components/MenuButton'
 import { Menu, BookOpen, FileText, BarChart3, Calendar, FolderOpen, Wrench } from "lucide-react"
+import type React from "react" // Added import for React
+
+
 export function GlobalLayout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
