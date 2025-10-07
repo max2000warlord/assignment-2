@@ -290,50 +290,55 @@ export default function TabsGenerator() {
             </Card>
 
             {generatedCode ? (
-              <Card
-                className="border-2 backdrop-blur-md overflow-hidden"
-                style={{
-                  borderColor: "var(--neon-pink)",
-                  boxShadow: "0 0 15px var(--neon-pink)",
-                  minHeight: '500px', // Ensure minimum height
-                  maxHeight: '900px', // Ensure minimum height
-                  padding: 0, // Remove padding so SyntaxHighlighter fills entire card
-                }}
-              >
-                <h2
-                  className="text-2xl flex p-3 font-semibold font-mono"
+              <div className="relative">
+                {/* Floating header */}
+                <div
+                  className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center px-6 py-4 border-b-2"
                   style={{
-                    color: "var(--neon-pink)",
-                    textShadow: "0 0 10px var(--neon-pink)",
+                    backgroundColor: "rgba(0, 0, 0, 0.9)",
+                    borderColor: "var(--neon-pink)",
+                    borderTopLeftRadius: "8px",
+                    borderTopRightRadius: "8px",
                   }}
                 >
-                  Generated Code
-
-                  <Button
-                    onClick={copyCode}
-                    size="sm"
-                    className="border-2 transition-all font-bold ml-auto"
+                  <h2
+                    className="text-2xl font-semibold font-mono flex"
                     style={{
-                      backgroundColor: "rgba(0, 0, 0, 0.7)",
-                      borderColor: "var(--neon-cyan)",
-                      color: "var(--neon-cyan)",
-                      boxShadow: "0 0 10px var(--neon-cyan)",
+                      color: "var(--neon-pink)",
+                      textShadow: "0 0 10px var(--neon-pink)",
                     }}
                   >
-                    Copy Code
-                  </Button>
-                </h2>
+                    Generated Code
 
-                {/* Full-card syntax highlighter */}
+                    <Button
+                      onClick={copyCode}
+                      size="sm"
+                      className="border-2 transition-all font-bold"
+                      style={{
+                        backgroundColor: "rgba(0, 0, 0, 0.7)",
+                        borderColor: "var(--neon-cyan)",
+                        color: "var(--neon-cyan)",
+                        boxShadow: "0 0 10px var(--neon-cyan)",
+                      }}
+                    >
+                      Copy Code
+                    </Button>
+                  </h2>
+                </div>
+
+                {/* SyntaxHighlighter as the card */}
                 <SyntaxHighlighter
                   language="html"
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '15px',
+                    padding: '80px 24px 24px 24px', // Top padding to account for header
                     fontSize: '14px',
-                    border: 'none',
-                    borderRadius: '0', // No border radius since it fills the card
+                    minHeight: '500px',
+                    border: `2px solid var(--neon-pink)`,
+                    borderRadius: '8px',
+                    boxShadow: '0 0 15px var(--neon-pink)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
                     overflow: 'auto',
                   }}
                   showLineNumbers={true}
@@ -346,7 +351,7 @@ export default function TabsGenerator() {
                 >
                   {generatedCode}
                 </SyntaxHighlighter>
-              </Card>
+              </div>
             ) : (
               <Card
                 className="p-6 border-2 backdrop-blur-md space-y-4"
