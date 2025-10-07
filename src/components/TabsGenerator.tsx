@@ -164,16 +164,8 @@ export default function TabsGenerator() {
   }
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: "url('/synthwave-cityscape.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+    <div className="min-h-screen relative">
+      <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative z-0">
         <main className="container mx-auto px-4 py-12">
@@ -189,7 +181,7 @@ export default function TabsGenerator() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card
-              className="p-6 border-2 backdrop-blur-md space-y-4"
+              className="p-6 border-2 space-y-4"
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-cyan)",
@@ -209,7 +201,7 @@ export default function TabsGenerator() {
               {tabs.map((tab) => (
                 <div
                   key={tab.id}
-                  className="border-2 backdrop-blur-sm p-4 rounded-lg space-y-3 transition-all"
+                  className="border-2  p-4 rounded-lg space-y-3 transition-all"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     borderColor: "var(--neon-magenta)",

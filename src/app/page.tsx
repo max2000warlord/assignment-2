@@ -107,7 +107,7 @@ function NavigationCard({
   return (
     <Link href={href}>
       <Card
-        className="p-6 border-2 transition-all duration-300 backdrop-blur-md group cursor-pointer h-full"
+        className="p-6 border-2 transition-all duration-300  group cursor-pointer h-full"
         style={{
           backgroundColor: "rgba(0, 0, 0, 0.7)",
           borderColor: color,
