@@ -325,33 +325,25 @@ export default function TabsGenerator() {
               </div>
 
               {generatedCode ? (
-                <div
-                  className="border-2 rounded-lg overflow-hidden max-h-[600px] overflow-y-auto"
-                  style={{
-                    borderColor: "var(--neon-cyan)",
-                    boxShadow: "0 0 10px var(--neon-cyan)",
+                <SyntaxHighlighter
+                  language="html"
+                  style={synthwaveStyle}
+                  customStyle={{
+                    margin: 0,
+                    padding: '16px',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    fontSize: '14px',
+                    maxHeight: '600px',
+                  }}
+                  showLineNumbers={false}
+                  wrapLines={true}
+                  lineNumberStyle={{
+                    color: 'var(--neon-cyan)',
+                    opacity: 0.5,
                   }}
                 >
-                  <SyntaxHighlighter
-                    language="html"
-                    style={synthwaveStyle}
-                    customStyle={{
-                      margin: 0,
-                      padding: '16px',
-                      backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                      fontSize: '14px',
-                      maxHeight: '600px',
-                    }}
-                    showLineNumbers={false}
-                    wrapLines={true}
-                    lineNumberStyle={{
-                      color: 'var(--neon-cyan)',
-                      opacity: 0.5,
-                    }}
-                  >
-                    {generatedCode}
-                  </SyntaxHighlighter>
-                </div>
+                  {generatedCode}
+                </SyntaxHighlighter>
               ) : (
                 <div
                   className="border-2 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center"
