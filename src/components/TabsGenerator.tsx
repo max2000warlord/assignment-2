@@ -289,29 +289,30 @@ export default function TabsGenerator() {
               </Button>
             </Card>
 
-            <Card
-              className="p-6 border-2 backdrop-blur-md space-y-4"
-              style={{
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
-                borderColor: "var(--neon-pink)",
-                boxShadow: "0 0 15px var(--neon-pink)",
-              }}
-            >
-              <div className="flex justify-between items-center">
+            {generatedCode ? (
+              <Card
+                className="border-2 backdrop-blur-md overflow-hidden"
+                style={{
+                  borderColor: "var(--neon-pink)",
+                  boxShadow: "0 0 15px var(--neon-pink)",
+                  minHeight: '500px', // Ensure minimum height
+                  maxHeight: '900px', // Ensure minimum height
+                  padding: 0, // Remove padding so SyntaxHighlighter fills entire card
+                }}
+              >
                 <h2
-                  className="text-2xl font-semibold font-mono"
+                  className="text-2xl flex p-3 font-semibold font-mono"
                   style={{
                     color: "var(--neon-pink)",
                     textShadow: "0 0 10px var(--neon-pink)",
                   }}
                 >
                   Generated Code
-                </h2>
-                {generatedCode && (
+
                   <Button
                     onClick={copyCode}
                     size="sm"
-                    className="border-2 transition-all font-bold"
+                    className="border-2 transition-all font-bold ml-auto"
                     style={{
                       backgroundColor: "rgba(0, 0, 0, 0.7)",
                       borderColor: "var(--neon-cyan)",
@@ -321,30 +322,51 @@ export default function TabsGenerator() {
                   >
                     Copy Code
                   </Button>
-                )}
-              </div>
+                </h2>
 
-              {generatedCode ? (
+                {/* Full-card syntax highlighter */}
                 <SyntaxHighlighter
                   language="html"
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '16px',
-                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    padding: '15px',
                     fontSize: '14px',
-                    maxHeight: '600px',
+                    border: 'none',
+                    borderRadius: '0', // No border radius since it fills the card
+                    overflow: 'auto',
                   }}
-                  showLineNumbers={false}
+                  showLineNumbers={true}
                   wrapLines={true}
                   lineNumberStyle={{
                     color: 'var(--neon-cyan)',
                     opacity: 0.5,
+                    textShadow: '0 0 5px rgba(0, 255, 255, 0.3)',
                   }}
                 >
                   {generatedCode}
                 </SyntaxHighlighter>
-              ) : (
+              </Card>
+            ) : (
+              <Card
+                className="p-6 border-2 backdrop-blur-md space-y-4"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  borderColor: "var(--neon-pink)",
+                  boxShadow: "0 0 15px var(--neon-pink)",
+                }}
+              >
+                <div className="flex justify-between items-center">
+                  <h2
+                    className="text-2xl font-semibold font-mono"
+                    style={{
+                      color: "var(--neon-pink)",
+                      textShadow: "0 0 10px var(--neon-pink)",
+                    }}
+                  >
+                    Generated Code
+                  </h2>
+                </div>
                 <div
                   className="border-2 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center"
                   style={{
@@ -355,8 +377,8 @@ export default function TabsGenerator() {
                 >
                   Click "Generate HTML Code" to see the output
                 </div>
-              )}
-            </Card>
+              </Card>
+            )}
           </div>
 
           {showPreview && tabs.length > 0 && (
