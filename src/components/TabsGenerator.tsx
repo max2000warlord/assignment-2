@@ -293,16 +293,14 @@ export default function TabsGenerator() {
               <div className="relative">
                 {/* Floating header */}
                 <div
-                  className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center px-6 py-4 border-b-2"
+                  className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center px-6 py-4"
                   style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.9)",
-                    borderColor: "var(--neon-pink)",
                     borderTopLeftRadius: "8px",
                     borderTopRightRadius: "8px",
                   }}
                 >
                   <h2
-                    className="text-2xl font-semibold font-mono"
+                    className="text-2xl font-semibold font-mono justify-center"
                     style={{
                       color: "var(--neon-pink)",
                       textShadow: "0 0 10px var(--neon-pink)",
@@ -332,7 +330,7 @@ export default function TabsGenerator() {
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '80px 24px 24px 24px', // Top padding to account for header
+                    padding: '80px 24px 24px 10px', // Top padding to account for header
                     fontSize: '14px',
                     minHeight: '500px',
                     border: `2px solid var(--neon-pink)`,
