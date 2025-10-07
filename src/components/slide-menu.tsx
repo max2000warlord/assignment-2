@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { X, Home, Zap, Radio, Settings, Scale, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { MenuButton } from '@/components/MenuButton'
+
 
 interface SlideMenuProps {
   isOpen: boolean
@@ -28,17 +30,18 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
 
       {/* Slide Menu */}
       <div
-        className={`fixed top-2 right-0 h-full w-80 bg-card/50 border-l-2 shadow-2xl transform transition-transform duration-300 ease-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-25 right-0 h-max w-80 bg-card/50 border-l-2 shadow-2xl transform transition-transform duration-300 ease-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         style={{
           borderColor: 'var(--neon-purple)',
+          borderRadius: '10px',
           boxShadow:
             '0 0 30px var(--neon-purple), inset 0 0 30px rgba(138, 43, 226, 0.1)',
         }}
       >
         <div className="flex flex-col h-full p-6">
           {/* Header */}
-          <div className="flex  items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-8">
             <h2
               className="text-2xl font-bold font-mono"
               style={{
@@ -51,15 +54,6 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
             >
               MENU
             </h2>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onClose}
-              className="hover:bg-primary/20"
-              style={{ color: 'var(--neon-pink)' }}
-            >
-              <X className="h-6 w-6" />
-            </Button>
           </div>
 
           {/* Menu Items */}

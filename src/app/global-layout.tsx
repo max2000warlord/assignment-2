@@ -18,7 +18,7 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
         <ThemeToggle />
         <MenuButton
           isOpen={isMenuOpen}
-          onToggle={() => setIsMenuOpen(true)}
+          onToggle={() => setIsMenuOpen(!isMenuOpen)} // Toggle instead of always setting to true
         />
       </div>
       <SlideMenu
