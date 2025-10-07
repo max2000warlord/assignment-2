@@ -302,7 +302,7 @@ export default function TabsGenerator() {
                   }}
                 >
                   <h2
-                    className="text-2xl font-semibold font-mono flex"
+                    className="text-2xl font-semibold font-mono"
                     style={{
                       color: "var(--neon-pink)",
                       textShadow: "0 0 10px var(--neon-pink)",
@@ -310,20 +310,20 @@ export default function TabsGenerator() {
                   >
                     Generated Code
 
-                    <Button
-                      onClick={copyCode}
-                      size="sm"
-                      className="border-2 transition-all font-bold"
-                      style={{
-                        backgroundColor: "rgba(0, 0, 0, 0.7)",
-                        borderColor: "var(--neon-cyan)",
-                        color: "var(--neon-cyan)",
-                        boxShadow: "0 0 10px var(--neon-cyan)",
-                      }}
-                    >
-                      Copy Code
-                    </Button>
                   </h2>
+                  <Button
+                    onClick={copyCode}
+                    size="sm"
+                    className="border-2 transition-all font-bold"
+                    style={{
+                      backgroundColor: "rgba(0, 0, 0, 0.7)",
+                      borderColor: "var(--neon-cyan)",
+                      color: "var(--neon-cyan)",
+                      boxShadow: "0 0 10px var(--neon-cyan)",
+                    }}
+                  >
+                    Copy Code
+                  </Button>
                 </div>
 
                 {/* SyntaxHighlighter as the card */}
