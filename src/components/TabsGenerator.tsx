@@ -2,6 +2,8 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { gradientDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 interface Tab {
   id: string
@@ -165,7 +167,7 @@ export default function TabsGenerator() {
 
   return (
     <div className="min-h-screen relative">
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0" />
 
       <div className="relative z-0">
         <main className="container mx-auto px-4 py-12">
@@ -324,17 +326,33 @@ export default function TabsGenerator() {
               </div>
 
               {generatedCode ? (
-                <pre
-                  className="border-2 font-mono text-sm p-4 rounded-lg overflow-x-auto max-h-[600px] overflow-y-auto"
+                <div
+                  className="border-2 rounded-lg overflow-hidden max-h-[600px] overflow-y-auto"
                   style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.8)",
                     borderColor: "var(--neon-cyan)",
-                    color: "var(--neon-cyan)",
                     boxShadow: "0 0 10px var(--neon-cyan)",
                   }}
                 >
-                  <code className="text-sm">{generatedCode}</code>
-                </pre>
+                  <SyntaxHighlighter
+                    language="html"
+                    style={gradientDark}
+                    customStyle={{
+                      margin: 0,
+                      padding: '16px',
+                      backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                      fontSize: '14px',
+                      maxHeight: '600px',
+                    }}
+                    showLineNumbers={false}
+                    wrapLines={true}
+                    lineNumberStyle={{
+                      color: 'var(--neon-cyan)',
+                      opacity: 0.5,
+                    }}
+                  >
+                    {generatedCode}
+                  </SyntaxHighlighter>
+                </div>
               ) : (
                 <div
                   className="border-2 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center"
