@@ -7,7 +7,6 @@ type Theme = "dark" | "light"
 type ThemeProviderProps = {
   children: React.ReactNode
   defaultTheme?: Theme
-  attribute?: string
 }
 
 const ThemeContext = React.createContext<{
@@ -15,76 +14,56 @@ const ThemeContext = React.createContext<{
   setTheme: (theme: Theme) => void
 }>({
   theme: "dark",
-  setTheme: () => null,
+  setTheme: () => { },
 })
 
-export function ThemeProvider({ children, defaultTheme = "dark", attribute = "class" }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(defaultTheme)
+function getBasePath() {
+  // Set in next.config.ts via env: { NEXT_PUBLIC_BASE_PATH: isProd ? '/assignment-2' : '' }
+  return process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+}
 
-  React.useEffect(() => {
-    const root = window.document.documentElement
+function imageFor(theme: Theme) {
+  const base = getBasePath()
+  return theme === "dark"
+    ? `${base}/synthwave-cityscape-dark.jpg`
+    : `${base}/synthwave-cityscape.jpg`
+}
 
-    // Get the target background image
-    const base = "/assignment-2"
-    const targetImage = theme === "dark"
-      ? `${base}/synthwave-cityscape-dark.jpg`
-      : `${base}/synthwave-cityscape.jpg`
+function applyTheme(theme: Theme) {
+  const root = document.documentElement
+  root.classList.remove("light", "dark")
+  root.classList.add(theme)
+  root.style.setProperty("--background-image", `url('${imageFor(theme)}')`)
+}
 
-    // Create overlay with new background image
-    const overlay = document.createElement('div')
-    overlay.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('${targetImage}');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      pointer-events: none;
-      z-index: -1;
-    `
+export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
+  const [theme, _setTheme] = React.useState<Theme>(defaultTheme)
 
-    document.body.appendChild(overlay)
+  // Apply immediately on mount to avoid any gap
+  React.useLayoutEffect(() => {
+    try {
+      const saved = localStorage.getItem("theme") as Theme | null
+      const initial = saved ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+      _setTheme(initial)
+      applyTheme(initial)
+    } catch {
+      applyTheme(defaultTheme)
+    }
+  }, [defaultTheme])
 
-    // Trigger fade in
-    setTimeout(() => {
-      overlay.style.opacity = '1'
-    }, 10)
-
-    // Change theme classes and update CSS variable at halfway point
-    setTimeout(() => {
-      root.classList.remove("light", "dark")
-      root.classList.add(theme)
-
-      // Update the CSS variable for the main background
-      document.documentElement.style.setProperty(
-        '--background-image',
-        `url('${targetImage}')`
-      )
-    }, 900)
-
-    // Fade out overlay and cleanup
-    setTimeout(() => {
-      overlay.style.opacity = '0'
-      setTimeout(() => {
-        if (overlay.parentNode) {
-          overlay.parentNode.removeChild(overlay)
-        }
-      }, 1500)
-    }, 1500)
-  }, [theme])
+  const setTheme = React.useCallback((next: Theme) => {
+    _setTheme(next)
+    try {
+      localStorage.setItem("theme", next)
+    } catch { }
+    applyTheme(next)
+  }, [])
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
 }
 
 export const useTheme = () => {
-  const context = React.useContext(ThemeContext)
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider")
-  }
-  return context
+  const ctx = React.useContext(ThemeContext)
+  if (!ctx) throw new Error("useTheme must be used within a ThemeProvider")
+  return ctx
 }
