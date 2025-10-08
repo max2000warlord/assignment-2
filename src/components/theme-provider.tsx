@@ -25,9 +25,10 @@ export function ThemeProvider({ children, defaultTheme = "dark", attribute = "cl
     const root = window.document.documentElement
 
     // Get the target background image
-    const targetImage = theme === 'dark'
-      ? '/synthwave-cityscape-dark.jpg'
-      : '/synthwave-cityscape.jpg'
+    const base = "/assignment-2"
+    const targetImage = theme === "dark"
+      ? `${base}/synthwave-cityscape-dark.jpg`
+      : `${base}/synthwave-cityscape.jpg`
 
     // Create overlay with new background image
     const overlay = document.createElement('div')
