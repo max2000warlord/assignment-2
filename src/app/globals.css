@@ -5,7 +5,7 @@
 
 :root {
   /* Light mode - Softer synthwave palette */
-  --background-image: url('/assignment-2/synthwave-cityscape.jpg');
+  --background-image: url('../../public/synthwave-cityscape.jpg');
   --background-size: cover;
   --background-position: center;
   --background-attachment: fixed;
@@ -52,7 +52,7 @@
 
 .dark {
   /* Dark mode - True synthwave neon aesthetic matching the cityscape */
-  --background-image: url('/assignment-2/synthwave-cityscape-dark.jpg');
+  --background-image: url('../../public/synthwave-cityscape-dark.jpg');
   --background-size: cover;
   --background-position: center;
   --background-attachment: fixed;
@@ -145,10 +145,11 @@
 }
 
 
-html, body {
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+body {
+  background-image: var(--background-image);
+  background-size: var(--background-size);
+  background-position: var(--background-position);
+  background-attachment: var(--background-attachment);
   background-repeat: no-repeat;
   transition: background-image 0.8s ease-in-out;
 }

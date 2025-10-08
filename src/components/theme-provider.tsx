@@ -18,34 +18,25 @@ const ThemeContext = React.createContext<{
   setTheme: () => null,
 })
 
-function imageFor(theme: Theme) {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
-  // If images are in public/images/, include /images
-  return theme === "dark"
-    ? `${base}/images/synthwave-cityscape-dark.jpg`
-    : `${base}/images/synthwave-cityscape.jpg`
-}
-
-export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultTheme = "dark", attribute = "class" }: ThemeProviderProps) {
   const [theme, setTheme] = React.useState<Theme>(defaultTheme)
 
   React.useEffect(() => {
-    const root = document.documentElement
-    const base = "/assignment-2"
-    const targetImage = theme === "dark"
-      ? `${base}/synthwave-cityscape-dark.jpg`
-      : `${base}/synthwave-cityscape.jpg`
+    const root = window.document.documentElement
 
-    // 1) Apply theme immediately so variables/classes are correct right away
-    root.classList.remove("light", "dark")
-    root.classList.add(theme)
-    root.style.setProperty("--background-image", `url('${targetImage}')`)
+    // Get the target background image
+    const targetImage = theme === 'dark'
+      ? '/synthwave-cityscape-dark.jpg'
+      : '/synthwave-cityscape.jpg'
 
-    // 2) Overlay to crossfade new image across the entire viewport, above the body background
-    const overlay = document.createElement("div")
+    // Create overlay with new background image
+    const overlay = document.createElement('div')
     overlay.style.cssText = `
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url('${targetImage}');
       background-size: cover;
       background-position: center;
@@ -53,31 +44,46 @@ export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProvider
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
       pointer-events: none;
-      z-index: 0; /* IMPORTANT: above body background */
+      z-index: -1;
     `
+
     document.body.appendChild(overlay)
 
-    // Fade overlay in, then out
-    requestAnimationFrame(() => { overlay.style.opacity = "1" })
-    const outTimer = setTimeout(() => {
-      overlay.style.opacity = "0"
-      const removeTimer = setTimeout(() => {
-        overlay.remove()
-      }, 900)
-      return () => clearTimeout(removeTimer)
+    // Trigger fade in
+    setTimeout(() => {
+      overlay.style.opacity = '1'
+    }, 10)
+
+    // Change theme classes and update CSS variable at halfway point
+    setTimeout(() => {
+      root.classList.remove("light", "dark")
+      root.classList.add(theme)
+
+      // Update the CSS variable for the main background
+      document.documentElement.style.setProperty(
+        '--background-image',
+        `url('${targetImage}')`
+      )
     }, 900)
 
-    return () => {
-      clearTimeout(outTimer)
-      overlay.remove()
-    }
+    // Fade out overlay and cleanup
+    setTimeout(() => {
+      overlay.style.opacity = '0'
+      setTimeout(() => {
+        if (overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay)
+        }
+      }, 1500)
+    }, 1500)
   }, [theme])
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
 }
 
 export const useTheme = () => {
-  const ctx = React.useContext(ThemeContext)
-  if (ctx === undefined) throw new Error("useTheme must be used within a ThemeProvider")
-  return ctx
+  const context = React.useContext(ThemeContext)
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider")
+  }
+  return context
 }
