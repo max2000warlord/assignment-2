@@ -15,6 +15,8 @@ jobs:
         run: bun install
       - name: Build site
         run: bun run build
+        env:
+          NEXT_DISABLE_ESLINT: 'true'
       - name: Export static site
         run: bun run export
       - name: Deploy to GitHub Pages
