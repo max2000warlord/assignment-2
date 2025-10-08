@@ -18,6 +18,14 @@ const ThemeContext = React.createContext<{
   setTheme: () => null,
 })
 
+function imageFor(theme: Theme) {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+  // If images are in public/images/, include /images
+  return theme === "dark"
+    ? `${base}/images/synthwave-cityscape-dark.jpg`
+    : `${base}/images/synthwave-cityscape.jpg`
+}
+
 export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
   const [theme, setTheme] = React.useState<Theme>(defaultTheme)
 
