@@ -1,4 +1,4 @@
-name: Build and Package Next.js Site with Bun
+name: Build and Deploy Next.js Site with Bun to GitHub Pages
 
 on:
   push:
@@ -9,30 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # Set up Bun
       - name: Install Bun
         uses: oven-sh/setup-bun@v1
-
-      # Install dependencies using Bun
       - name: Install dependencies
         run: bun install
-
-      # Build Next.js site
       - name: Build site
         run: bun run build
-
-      # (Optional) Export static site
       - name: Export static site
         run: bun run export
-
-      # (Optional) Upload static site as artifact
-      - name: Upload static site
-        uses: actions/upload-artifact@v4
-        with:
-          name: nextjs-static-site
-          path: out/
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
