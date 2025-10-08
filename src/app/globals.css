@@ -145,7 +145,7 @@
 }
 
 
-body {
+html, body {
   background-image: var(--background-image);
   background-size: var(--background-size);
   background-position: var(--background-position);
