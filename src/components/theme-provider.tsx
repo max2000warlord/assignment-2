@@ -7,6 +7,7 @@ type Theme = "dark" | "light"
 type ThemeProviderProps = {
   children: React.ReactNode
   defaultTheme?: Theme
+  attribute?: string
 }
 
 const ThemeContext = React.createContext<{
@@ -14,56 +15,61 @@ const ThemeContext = React.createContext<{
   setTheme: (theme: Theme) => void
 }>({
   theme: "dark",
-  setTheme: () => { },
+  setTheme: () => null,
 })
 
-function getBasePath() {
-  // Set in next.config.ts via env: { NEXT_PUBLIC_BASE_PATH: isProd ? '/assignment-2' : '' }
-  return process.env.NEXT_PUBLIC_BASE_PATH ?? ""
-}
-
-function imageFor(theme: Theme) {
-  const base = getBasePath()
-  return theme === "dark"
-    ? `${base}/synthwave-cityscape-dark.jpg`
-    : `${base}/synthwave-cityscape.jpg`
-}
-
-function applyTheme(theme: Theme) {
-  const root = document.documentElement
-  root.classList.remove("light", "dark")
-  root.classList.add(theme)
-  root.style.setProperty("--background-image", `url('${imageFor(theme)}')`)
-}
-
 export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
-  const [theme, _setTheme] = React.useState<Theme>(defaultTheme)
+  const [theme, setTheme] = React.useState<Theme>(defaultTheme)
 
-  // Apply immediately on mount to avoid any gap
-  React.useLayoutEffect(() => {
-    try {
-      const saved = localStorage.getItem("theme") as Theme | null
-      const initial = saved ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-      _setTheme(initial)
-      applyTheme(initial)
-    } catch {
-      applyTheme(defaultTheme)
+  React.useEffect(() => {
+    const root = document.documentElement
+    const base = "/assignment-2"
+    const targetImage = theme === "dark"
+      ? `${base}/synthwave-cityscape-dark.jpg`
+      : `${base}/synthwave-cityscape.jpg`
+
+    // 1) Apply theme immediately so variables/classes are correct right away
+    root.classList.remove("light", "dark")
+    root.classList.add(theme)
+    root.style.setProperty("--background-image", `url('${targetImage}')`)
+
+    // 2) Overlay to crossfade new image across the entire viewport, above the body background
+    const overlay = document.createElement("div")
+    overlay.style.cssText = `
+      position: fixed;
+      inset: 0;
+      background-image: url('${targetImage}');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      pointer-events: none;
+      z-index: 0; /* IMPORTANT: above body background */
+    `
+    document.body.appendChild(overlay)
+
+    // Fade overlay in, then out
+    requestAnimationFrame(() => { overlay.style.opacity = "1" })
+    const outTimer = setTimeout(() => {
+      overlay.style.opacity = "0"
+      const removeTimer = setTimeout(() => {
+        overlay.remove()
+      }, 900)
+      return () => clearTimeout(removeTimer)
+    }, 900)
+
+    return () => {
+      clearTimeout(outTimer)
+      overlay.remove()
     }
-  }, [defaultTheme])
-
-  const setTheme = React.useCallback((next: Theme) => {
-    _setTheme(next)
-    try {
-      localStorage.setItem("theme", next)
-    } catch { }
-    applyTheme(next)
-  }, [])
+  }, [theme])
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
 }
 
 export const useTheme = () => {
   const ctx = React.useContext(ThemeContext)
-  if (!ctx) throw new Error("useTheme must be used within a ThemeProvider")
+  if (ctx === undefined) throw new Error("useTheme must be used within a ThemeProvider")
   return ctx
 }

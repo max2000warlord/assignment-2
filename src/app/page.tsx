@@ -12,19 +12,10 @@ export default function Home() {
 
   return (
     <div>
-
       <div className="relative z-7">
-        {/* Header */}
-
-        {/* Main Content */}
         <main className="container mx-auto px-4 py-12">
           <section className="relative w-full py-20 flex items-center justify-center">
-            {/* Background image */}
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-fixed"
-            />
-
-            {/* Semi-transparent frosted glass panel */}
+            {/* Removed the unused absolute bg layer */}
             <div className="relative z-10 p-10 md:p-20 bg-black/50 backdrop-blur-lg rounded-xl text-center max-w-3xl mx-auto">
               <h1
                 className="text-4xl md:text-6xl font-bold font-mono mb-6"
