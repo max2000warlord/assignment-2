@@ -1,9 +1,11 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'export', // Enables static export for Next.js 13+
+  output: 'export',
+  basePath: '/assignment-2',
+  assetPrefix: '/assignment-2/',
   turbopack: {
-    root: __dirname, // explicitly set your project root
+    root: __dirname,
   },
   allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
   eslint: {
