@@ -182,11 +182,12 @@ export default function TabsGenerator() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
             <Card
-              className="p-6 border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
+              className="p-6 backdrop-blur-2xl border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-cyan)",
-                height: "90vh",
+                height: '70vh',
+                maxHeight: '70vh',
               }}
             >
               <h2
@@ -216,7 +217,7 @@ export default function TabsGenerator() {
                     type="text"
                     value={tab.label}
                     onChange={(e) => updateTab(tab.id, "label", e.target.value)}
-                    className="w-full p-3 border-2 rounded backdrop-blur-sm focus:outline-none transition-all font-mono"
+                    className="w-full p-3 border-2 rounded focus:outline-none transition-all font-mono"
                     style={{
                       backgroundColor: "rgba(0, 0, 0, 0.6)",
                       borderColor: "var(--neon-cyan)",
@@ -227,7 +228,7 @@ export default function TabsGenerator() {
                   <textarea
                     value={tab.content}
                     onChange={(e) => updateTab(tab.id, "content", e.target.value)}
-                    className="w-full p-3 border-2 rounded backdrop-blur-sm focus:outline-none transition-all resize-none"
+                    className="w-full p-3 border-2 rounded focus:outline-none transition-all resize-none"
                     style={{
                       backgroundColor: "rgba(0, 0, 0, 0.6)",
                       borderColor: "var(--neon-cyan)",
@@ -329,12 +330,11 @@ export default function TabsGenerator() {
                 {/* SyntaxHighlighter as the card */}
 
                 <div
-                  className="border-0 backdrop-blur-2xl rounded-lg pt-95 p-8 pb-8 text-center flex items-center justify-center"
+                  className="border-0 rounded-lg backdrop-blur-2xl pt-15 p-8 pb-8 text-center flex items-center justify-center"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     borderColor: "var(--neon-magenta)",
                     color: "rgba(255, 255, 255, 0.5)",
-                    height: '70vh',
                     overflow: 'auto',
                   }}
                 >
@@ -346,10 +346,10 @@ export default function TabsGenerator() {
                       margin: 0,
                       padding: '10px 24px 24px 0px', // Increased top padding to 100px
                       fontSize: '14px',
-                      height: '90vh',
-                      //:width: ,maxHeight: '90vh',
+                      height: '70vh',
+                      maxHeight: '70vh',
                       borderRadius: '8px',
-                      backgroundColor: "rgba(0, 0, 0, 0.2)",
+                      backgroundColor: "rgba(0, 0, 0, 0.0)",
                       overflow: 'auto',
                     }}
                     showLineNumbers={true}
@@ -393,6 +393,7 @@ export default function TabsGenerator() {
                     borderColor: "var(--neon-magenta)",
                     color: "rgba(255, 255, 255, 0.5)",
                     height: '70vh',
+                    maxHeight: '70vh',
                   }}
                 >
                   Click "Generate HTML Code" to see the output
@@ -419,7 +420,7 @@ export default function TabsGenerator() {
                 Live Preview
               </h2>
               <div
-                className="border-2 rounded-lg overflow-hidden backdrop-blur-sm"
+                className="border-2 rounded-lg overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
                   borderColor: "var(--neon-cyan)",
