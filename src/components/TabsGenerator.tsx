@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { synthwaveStyle, synthwaveColors } from '@/lib/theme-utils';
 interface Tab {
@@ -297,18 +297,17 @@ export default function TabsGenerator() {
                   className="absolute top-0 left-0 right-0 z-10 px-6 py-4 flex justify-center items-center rounded-t-lg"
                 >
                   {/* Centered title */}
-                  <h2
-                    className="text-4xl md:text-3xl font-bold font-mono text-center"
-                    style={{
-                      background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                      filter: "drop-shadow(0 0 20px var(--neon-pink)) drop-shadow(0 0 40px var(--neon-cyan))",
-                    }}
-                  >
-                    Generated Code
-                  </h2>
+                  <CardHeader>
+                    <CardTitle
+                      className="text-2xl font-semibold font-mono justify-center"
+                      style={{
+                        color: "var(--neon-pink)",
+                        textShadow: "0 0 10px var(--neon-pink)",
+                      }}
+                    >
+                      Generated Code
+                    </CardTitle>
+                  </CardHeader>
 
                   {/* Button absolutely positioned to the right */}
                   <Button
@@ -331,14 +330,12 @@ export default function TabsGenerator() {
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '80px 24px 24px 5px',
+                    padding: '100px 24px 24px 5px', // Increased top padding to 100px
                     fontSize: '14px',
-                    height: 'calc(100vh - 300px)', // Dynamic height based on viewport
-                    maxHeight: 'calc(100vh - 200px)', // Prevent too much growth
-                    minHeight: '400px', // Minimum usable height
-                    border: `2px solid var(--neon-pink)`,
+                    height: '60vh',
+                    maxHeight: '90vh',
+                    minHeight: '400px',
                     borderRadius: '8px',
-                    boxShadow: '0 0 15px var(--neon-pink)',
                     backgroundColor: 'rgba(0, 0, 0, 0.8)',
                     overflow: 'auto',
                   }}
