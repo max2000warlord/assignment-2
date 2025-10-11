@@ -186,6 +186,7 @@ export default function TabsGenerator() {
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-cyan)",
+                height: "70vh",
               }}
             >
               <h2
@@ -313,7 +314,7 @@ export default function TabsGenerator() {
                       size="sm"
                       className="absolute right-6 border-0 transition-all font-bold rounded-lg"
                       style={{
-                        backgroundColor: "rgba(0, 0, 0, 0.7)",
+                        background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
                         borderColor: "var(--neon-cyan)",
                         color: "var(--neon-cyan)",
                         boxShadow: "0 0 10px var(--neon-cyan)",
@@ -327,17 +328,18 @@ export default function TabsGenerator() {
                 </div>
                 {/* SyntaxHighlighter as the card */}
                 <SyntaxHighlighter
+                  className="backdrop-blur-lg"
                   language="html"
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '100px 24px 24px 5px', // Increased top padding to 100px
+                    padding: '80px 24px 24px 5px', // Increased top padding to 100px
                     fontSize: '14px',
-                    height: '60vh',
+                    height: '70vh',
                     maxHeight: '90vh',
                     minHeight: '400px',
                     borderRadius: '8px',
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
                     overflow: 'auto',
                   }}
                   showLineNumbers={true}
@@ -389,7 +391,7 @@ export default function TabsGenerator() {
             <Card
               className="mt-8 p-6 border-0 backdrop-blur-md"
               style={{
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
                 borderColor: "var(--neon-purple)",
                 boxShadow: "0 0 15px var(--neon-purple)",
               }}
@@ -406,7 +408,7 @@ export default function TabsGenerator() {
               <div
                 className="border-2 rounded-lg overflow-hidden backdrop-blur-sm"
                 style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
                   borderColor: "var(--neon-cyan)",
                   boxShadow: "0 0 15px var(--neon-cyan)",
                 }}

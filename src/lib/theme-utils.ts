@@ -56,7 +56,7 @@ export const synthwaveStyle: { [key: string]: CSSProperties } = {
   },
   'pre[class*="language-"]': {
     color: synthwaveColors.cyan,
-    background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.9) 0%, rgba(13, 0, 26, 0.9) 100%)',
+    background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
     textShadow: createGlow(synthwaveColors.cyan, 0.5),
     fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
     fontSize: '1em',

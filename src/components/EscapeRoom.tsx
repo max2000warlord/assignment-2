@@ -231,7 +231,7 @@ for (let person of data) {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative">
       {/* WebM Video Background */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
@@ -241,11 +241,17 @@ for (let person of data) {
         playsInline
         preload="auto"
         style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
           zIndex: -1,
           filter: 'brightness(0.4) contrast(1.2)',
         }}
       >
-        <source src="/public/escape-room-bg.webm" type="video/webm" />
+        <source src="/extract.webm" type="video/webm" />
       </video>
 
 
