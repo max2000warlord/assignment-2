@@ -165,7 +165,7 @@ export default function TabsGenerator() {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className=" relative">
       <div className="absolute inset-0" />
 
       <div className="relative z-0">
@@ -180,13 +180,12 @@ export default function TabsGenerator() {
             TABS GENERATOR
           </h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
             <Card
-              className="p-6 border-0 space-y-4"
+              className="p-6 border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-cyan)",
-                //boxShadow: "0 0 15px var(--neon-cyan)",
               }}
             >
               <h2
@@ -291,7 +290,6 @@ export default function TabsGenerator() {
                 Generate HTML Code
               </Button>
             </Card>
-
             {generatedCode ? (
               <div className="relative">
                 {/* Floating header */}
@@ -333,10 +331,14 @@ export default function TabsGenerator() {
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '80px 24px 24px 2px', // Top padding to account for header
+                    padding: '80px 24px 24px 5px',
                     fontSize: '14px',
-                    minHeight: '500px',
-                    borderRadius: '10px',
+                    height: 'calc(100vh - 300px)', // Dynamic height based on viewport
+                    maxHeight: 'calc(100vh - 200px)', // Prevent too much growth
+                    minHeight: '400px', // Minimum usable height
+                    border: `2px solid var(--neon-pink)`,
+                    borderRadius: '8px',
+                    boxShadow: '0 0 15px var(--neon-pink)',
                     backgroundColor: 'rgba(0, 0, 0, 0.8)',
                     overflow: 'auto',
                   }}
@@ -353,7 +355,7 @@ export default function TabsGenerator() {
               </div>
             ) : (
               <Card
-                className="p-6 border-0 backdrop-blur-md space-y-4"
+                className="p-6 border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
                 style={{
                   backgroundColor: "rgba(0, 0, 0, 0.7)",
                   borderColor: "var(--neon-pink)",
