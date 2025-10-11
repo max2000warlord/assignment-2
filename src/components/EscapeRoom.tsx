@@ -231,13 +231,34 @@ for (let person of data) {
   }
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center"
-      style={{
-        position: 'relative'
-      }}
-    >
-      <div className="container mx-auto px-4 py-8" style={{ paddingTop: '140px' }}>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* WebM Video Background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        style={{
+          zIndex: -1,
+          filter: 'brightness(0.4) contrast(1.2)',
+        }}
+      >
+        <source src="/videos/escape-room-bg.webm" type="video/webm" />
+        <source src="/videos/escape-room-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for better contrast */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(26,0,51,0.4) 50%, rgba(0,0,0,0.7) 100%)'
+        }}
+      />
+
+      {/* Content container */}
+      <div className="relative z-10 container mx-auto px-4 py-8" style={{ paddingTop: '140px' }}>
         <h1
           style={{
             fontSize: '3.5rem',
