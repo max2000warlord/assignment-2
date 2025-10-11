@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Suspense } from 'react'
-import { GlobalLayout } from '@/app/global-layout'
+import { GlobalLayout } from '@/components/layout/GlobalLayout'
 
 export const metadata: Metadata = {
   title: "Synthwave UI",

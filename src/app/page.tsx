@@ -5,8 +5,6 @@ import Link from "next/link"
 import { useState } from "react"
 import { Menu, BookOpen, FileText, BarChart3, Calendar, FolderOpen, Wrench } from "lucide-react"
 import { Card } from "@/components/ui/card"
-import { ThemeToggle } from "@/components/theme-toggle"
-
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -15,7 +13,6 @@ export default function Home() {
       <div className="relative z-7">
         <main className="container mx-auto px-4 py-12">
           <section className="relative w-full py-20 flex items-center justify-center">
-            {/* Removed the unused absolute bg layer */}
             <div className="relative z-10 p-10 md:p-20 bg-black/50 backdrop-blur-lg rounded-xl text-center max-w-3xl mx-auto">
               <h1
                 className="text-4xl md:text-6xl font-bold font-mono mb-6"
@@ -71,7 +68,7 @@ export default function Home() {
             <NavigationCard
               href="/tools/tabs-generator"
               icon={<Wrench className="h-8 w-8" />}
-              title="Dev Tools"
+              title="Tabs Generator"
               description="HTML generators and utilities"
               color="var(--neon-pink)"
             />

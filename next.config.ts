@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   turbopack: { root: __dirname },
   allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
   eslint: { ignoreDuringBuilds: true },
-  //typescript: { ignoreBuildErrors: true },
+  typescript: { ignoreBuildErrors: false },
 }
 
 export default nextConfig

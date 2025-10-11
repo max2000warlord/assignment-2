@@ -182,18 +182,21 @@ export default function TabsGenerator() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card
-              className="p-6 border-2 space-y-4"
+              className="p-6 border-0 space-y-4"
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-cyan)",
-                boxShadow: "0 0 15px var(--neon-cyan)",
+                //boxShadow: "0 0 15px var(--neon-cyan)",
               }}
             >
               <h2
-                className="text-2xl font-semibold font-mono mb-4"
+                className="text-3xl text-center md:text-3xl font-bold font-mono mb-6"
                 style={{
-                  color: "var(--neon-cyan)",
-                  textShadow: "0 0 10px var(--neon-cyan)",
+                  background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  filter: "drop-shadow(0 0 20px var(--neon-pink)) drop-shadow(0 0 40px var(--neon-cyan))",
                 }}
               >
                 Configure Tabs
@@ -293,26 +296,27 @@ export default function TabsGenerator() {
               <div className="relative">
                 {/* Floating header */}
                 <div
-                  className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center px-6 py-4"
-                  style={{
-                    borderTopLeftRadius: "8px",
-                    borderTopRightRadius: "8px",
-                  }}
+                  className="absolute top-0 left-0 right-0 z-10 px-6 py-4 flex justify-center items-center rounded-t-lg"
                 >
+                  {/* Centered title */}
                   <h2
-                    className="text-2xl font-semibold font-mono justify-center"
+                    className="text-4xl md:text-3xl font-bold font-mono text-center"
                     style={{
-                      color: "var(--neon-pink)",
-                      textShadow: "0 0 10px var(--neon-pink)",
+                      background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      filter: "drop-shadow(0 0 20px var(--neon-pink)) drop-shadow(0 0 40px var(--neon-cyan))",
                     }}
                   >
                     Generated Code
-
                   </h2>
+
+                  {/* Button absolutely positioned to the right */}
                   <Button
                     onClick={copyCode}
                     size="sm"
-                    className="border-2 transition-all font-bold"
+                    className="absolute right-6 border-0 transition-all font-bold rounded-lg"
                     style={{
                       backgroundColor: "rgba(0, 0, 0, 0.7)",
                       borderColor: "var(--neon-cyan)",
@@ -323,19 +327,16 @@ export default function TabsGenerator() {
                     Copy Code
                   </Button>
                 </div>
-
                 {/* SyntaxHighlighter as the card */}
                 <SyntaxHighlighter
                   language="html"
                   style={synthwaveStyle}
                   customStyle={{
                     margin: 0,
-                    padding: '80px 24px 24px 10px', // Top padding to account for header
+                    padding: '80px 24px 24px 2px', // Top padding to account for header
                     fontSize: '14px',
                     minHeight: '500px',
-                    border: `2px solid var(--neon-pink)`,
-                    borderRadius: '8px',
-                    boxShadow: '0 0 15px var(--neon-pink)',
+                    borderRadius: '10px',
                     backgroundColor: 'rgba(0, 0, 0, 0.8)',
                     overflow: 'auto',
                   }}
@@ -352,26 +353,26 @@ export default function TabsGenerator() {
               </div>
             ) : (
               <Card
-                className="p-6 border-2 backdrop-blur-md space-y-4"
+                className="p-6 border-0 backdrop-blur-md space-y-4"
                 style={{
                   backgroundColor: "rgba(0, 0, 0, 0.7)",
                   borderColor: "var(--neon-pink)",
-                  boxShadow: "0 0 15px var(--neon-pink)",
+                  boxShadow: "0 0 0px var(--neon-pink)",
                 }}
               >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center border-0">
                   <h2
-                    className="text-2xl font-semibold font-mono"
+                    className="text-2xl font-semibold border-0 font-mono"
                     style={{
                       color: "var(--neon-pink)",
-                      textShadow: "0 0 10px var(--neon-pink)",
+                      textShadow: "0 0 0px var(--neon-pink)",
                     }}
                   >
                     Generated Code
                   </h2>
                 </div>
                 <div
-                  className="border-2 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center"
+                  className="border-0 rounded-lg p-8 text-center min-h-[400px] flex items-center justify-center"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     borderColor: "var(--neon-magenta)",
@@ -386,7 +387,7 @@ export default function TabsGenerator() {
 
           {showPreview && tabs.length > 0 && (
             <Card
-              className="mt-8 p-6 border-2 backdrop-blur-md"
+              className="mt-8 p-6 border-0 backdrop-blur-md"
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-purple)",
@@ -412,7 +413,7 @@ export default function TabsGenerator() {
               >
                 {/* Tab Buttons */}
                 <div
-                  className="flex border-b-2"
+                  className="flex border-b-0"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.6)",
                     borderColor: "var(--neon-magenta)",
