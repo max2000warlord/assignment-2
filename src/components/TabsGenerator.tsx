@@ -76,7 +76,7 @@ export default function TabsGenerator() {
             background: transparent;
             border: none;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             font-family: 'Courier New', monospace;
             color: #00ffff;
             transition: all 0.3s;
