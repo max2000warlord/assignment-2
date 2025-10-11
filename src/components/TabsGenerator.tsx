@@ -294,12 +294,12 @@ export default function TabsGenerator() {
               <div className="relative">
                 {/* Floating header */}
                 <div
-                  className="absolute top-0 left-0 right-0 z-10 px-6 py-4 flex justify-center items-center rounded-t-lg"
+                  className="absolute backdrop-blur-2xl top-0 left-0 right-0 z-10 px-6 pt-4 flex justify-center items-center rounded-t-lg"
                 >
                   {/* Centered title */}
-                  <CardHeader>
+                  <CardHeader className="whitespace-nowrap justify-center">
                     <CardTitle
-                      className="text-2xl font-semibold font-mono justify-center"
+                      className="text-3xl font-semibold font-mono justify-center"
                       style={{
                         color: "var(--neon-pink)",
                         textShadow: "0 0 10px var(--neon-pink)",
@@ -307,22 +307,23 @@ export default function TabsGenerator() {
                     >
                       Generated Code
                     </CardTitle>
+
+                    <Button
+                      onClick={copyCode}
+                      size="sm"
+                      className="absolute right-6 border-0 transition-all font-bold rounded-lg"
+                      style={{
+                        backgroundColor: "rgba(0, 0, 0, 0.7)",
+                        borderColor: "var(--neon-cyan)",
+                        color: "var(--neon-cyan)",
+                        boxShadow: "0 0 10px var(--neon-cyan)",
+                      }}
+                    >
+                      Copy Code
+                    </Button>
                   </CardHeader>
 
                   {/* Button absolutely positioned to the right */}
-                  <Button
-                    onClick={copyCode}
-                    size="sm"
-                    className="absolute right-6 border-0 transition-all font-bold rounded-lg"
-                    style={{
-                      backgroundColor: "rgba(0, 0, 0, 0.7)",
-                      borderColor: "var(--neon-cyan)",
-                      color: "var(--neon-cyan)",
-                      boxShadow: "0 0 10px var(--neon-cyan)",
-                    }}
-                  >
-                    Copy Code
-                  </Button>
                 </div>
                 {/* SyntaxHighlighter as the card */}
                 <SyntaxHighlighter
