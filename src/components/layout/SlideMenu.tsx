@@ -4,8 +4,6 @@ import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { X, Home, Zap, Radio, Settings, Scale, User } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { MenuButton } from '@/components/MenuButton'
 
 
 interface SlideMenuProps {
@@ -71,7 +69,7 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
 
             <MenuItem icon={<Zap />} label="Features" color="var(--neon-yellow)" />
             <Link
-              href="/tabs-generator"
+              href="/tools/tabs-generator"
               onClick={onClose}
               className={`flex items-center gap-4 px-4 py-3 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/tools/tabs-generator')
                 ? 'bg-[var(--neon-pink)]/20'
@@ -82,7 +80,7 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
               🔖 Tabs Generator
             </Link>
             <Link
-              href="/escape-room"
+              href="/tools/escape-room"
               onClick={onClose}
               className={`flex items-center gap-4 px-4 py-3 rounded-lg font-mono text-lg transition-all duration-200 ${isActive('/tools/tabs-generator')
                 ? 'bg-[var(--neon-pink)]/20'
