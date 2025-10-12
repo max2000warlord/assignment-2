@@ -21,10 +21,23 @@ jobs:
       - name: Restore Bun cache
         uses: actions/cache@v4
         with:
-          path: ~/.cache/bun
+          path: |
+            ~/.bun/install/cache
+            ~/.cache/bun
           key: bun-cache-${{ runner.os }}-v1-${{ hashFiles('bun.lockb') }}
           restore-keys: |
             bun-cache-${{ runner.os }}-v1-
+
+      - name: Check if node_modules exists
+        id: check-nm
+        run: echo "exists=$(test -d node_modules && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
+
+      - name: Restore node_modules
+        if: steps.check-nm.outputs.exists == 'true'
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-bun-v1-${{ hashFiles('bun.lockb') }}
 
       # Cache node_modules (invalidate when lockfile changes)
       - name: Restore node_modules
@@ -53,7 +66,7 @@ jobs:
       - name: Build site
         run: bun run build
         env:
-          NEXT_DISABLE_ESLINT: 'true'
+          NEXT_DISABLE_ESLINT: "true"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

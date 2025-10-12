@@ -95,11 +95,11 @@ function NavigationCard({
   return (
     <Link href={href}>
       <Card
-        className="p-6 border-2 transition-all duration-300  group cursor-pointer h-full"
+        className="p-6 border-0 transition-all duration-300 backdrop-blur-lg group cursor-pointer h-full"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           borderColor: color,
-          boxShadow: `0 0 15px ${color}`,
+          boxShadow: `0 0 0px ${color}`,
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.boxShadow = `0 0 30px ${color}, inset 0 0 20px ${color}20`

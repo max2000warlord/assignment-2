@@ -20,8 +20,8 @@ export function MenuButton({
       onClick={onToggle}
       className="border-2 transition-all duration-200 hover:scale-105"
       style={{
-        borderColor: color,
-        color,
+        borderColor: "color",
+        background: "transparent",
         boxShadow: `0 0 15px ${color}, inset 0 0 15px ${color}`,
       }}
       aria-label={isOpen ? "Close menu" : "Open menu"}
