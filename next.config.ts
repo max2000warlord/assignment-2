@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true
-  }
+  },
   basePath: isProd ? `/${repo}` : '',
   assetPrefix: isProd ? `/${repo}/` : undefined,
   env: {
