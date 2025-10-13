@@ -170,28 +170,27 @@ export default function TabsGenerator() {
 
       <div className="relative z-0">
         <main className="container mx-auto px-4 py-0">
-          <h1
-            className="text-4xl font-bold font-mono text-center mb-8"
+          <Card
+            className="text-4xl inline-block flex justify-center text-center font-bold font-mono backdrop-blur-2xl bg-black/50 border-0 space-y-4"
             style={{
               color: "var(--neon-pink)",
               textShadow: "0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink)",
             }}
           >
             TABS GENERATOR
-          </h1>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+          </Card>
+          <div className="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-6 ">
             <Card
-              className="p-6 backdrop-blur-2xl border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
+              className="p-6 pt-4 backdrop-blur-2xl border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
               style={{
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderColor: "var(--neon-cyan)",
-                height: '70vh',
-                maxHeight: '70vh',
+                height: '90vh',
+                maxHeight: '90vh',
               }}
             >
               <h2
-                className="text-3xl text-center md:text-3xl font-bold font-mono mb-6"
+                className="text-3xl text-center md:text-3xl font-bold font-mono mb-0"
                 style={{
                   background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
                   WebkitBackgroundClip: "text",
@@ -330,16 +329,18 @@ export default function TabsGenerator() {
                 {/* SyntaxHighlighter as the card */}
 
                 <div
-                  className="border-0 rounded-lg backdrop-blur-2xl pt-15 p-8 pb-8 text-center flex items-center justify-center"
+                  className="border-0 rounded-lg backdrop-blur-2xl pt-5 p-8 pb-8 text-center flex items-center justify-center"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     borderColor: "var(--neon-magenta)",
                     color: "rgba(255, 255, 255, 0.5)",
                     overflow: 'auto',
+                    height: '90vh',
+                    maxHeight: '90vh',
                   }}
                 >
                   <SyntaxHighlighter
-                    className=", rounded-lg"
+                    className="p-8, rounded-lg"
                     language="html"
                     style={synthwaveStyle}
                     customStyle={{
@@ -350,7 +351,6 @@ export default function TabsGenerator() {
                       maxHeight: '70vh',
                       borderRadius: '8px',
                       backgroundColor: "rgba(0, 0, 0, 0.0)",
-                      overflow: 'auto',
                     }}
                     showLineNumbers={true}
                     wrapLines={true}
@@ -367,10 +367,12 @@ export default function TabsGenerator() {
               </div>
             ) : (
               <Card
-                className="p-6 border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto backdrop-blur-2xl"
+                className="p-6 pt-4 border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto backdrop-blur-2xl"
                 style={{
                   borderColor: "var(--neon-pink)",
-                  boxShadow: "0 0 0px var(--neon-pink)",
+                  boxShadow: "0 0 20px var(--neon-pink)",
+                  height: '90vh',
+                  maxHeight: '90vh',
                   background: 'linear-gradient(135deg, rgba(25, 0, 49, 0.5) 0%, rgba(12, 0, 24, 0.5) 100%)',
                 }}
               >

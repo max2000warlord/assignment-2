@@ -1,0 +1,10 @@
+nohup: ignoring input
+$ next dev
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.19:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1054ms
+[?25h

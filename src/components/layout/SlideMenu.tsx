@@ -21,14 +21,14 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/60  transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         onClick={onClose}
       />
 
       {/* Slide Menu */}
       <div
-        className={`fixed top-25 right-0 h-max w-80 bg-card/50 border-l-2 shadow-2xl transform transition-transform duration-300 ease-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-25 right-0 h-max w-80 bg-black/50 backdrop-blur-2xl transform transition-transform duration-300 ease-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         style={{
           borderColor: 'var(--neon-purple)',
@@ -39,22 +39,6 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
       >
         <div className="flex flex-col h-full p-6">
           {/* Header */}
-          <div className="flex items-center justify-between mb-8">
-            <h2
-              className="text-2xl font-bold font-mono"
-              style={{
-                background: `linear-gradient(135deg, var(--neon-purple), var(--neon-pink))`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                filter: 'drop-shadow(0 0 15px var(--neon-purple))',
-              }}
-            >
-              MENU
-            </h2>
-          </div>
-
-          {/* Menu Items */}
           <nav className="flex-1 space-y-2">
             <Link
               href="/"
@@ -94,16 +78,6 @@ export function SlideMenu({ isOpen, onClose }: SlideMenuProps) {
             <MenuItem icon={<User />} label="Profile" color="var(--neon-green)" />
             <MenuItem icon={<Settings />} label="Settings" color="var(--neon-pink)" />
           </nav>
-
-          {/* Footer */}
-          <div
-            className="pt-6 border-t"
-            style={{ borderColor: 'var(--neon-purple)' }}
-          >
-            <p className="text-sm text-muted-foreground font-mono text-center">
-              SYNTHWAVE v1.0
-            </p>
-          </div>
         </div>
       </div>
     </>

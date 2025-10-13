@@ -6,7 +6,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background-image: url('${process.env.NEXT_PUBLIC_BASE_PATH}/synthwave-cityscape.jpg');
+  --background-image: url('/images/synthwave-cityscape.jpg');
   --background-size: cover;
   --background-position: center;
   --background-attachment: fixed;
@@ -53,7 +53,7 @@
 }
 
 .dark {
-  --background-image: url('${process.env.NEXT_PUBLIC_BASE_PATH}/synthwave-cityscape-dark.jpg');
+  --background-image: url('/images/synthwave-cityscape-dark.jpg');
   --background-size: cover;
   --background-position: center;
   --background-attachment: fixed;

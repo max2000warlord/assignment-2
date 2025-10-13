@@ -15,7 +15,12 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_BASE_PATH: isProd ? `/${repo}` : '',
   },
   turbopack: { root: __dirname },
-  allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
+  allowedDevOrigins: [
+    'local-origin.dev',
+    '*.local-origin.dev',
+    'http://192.168.0.19:3000',
+    'http://192.168.0.220:3000',
+  ],
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: false },
 }
