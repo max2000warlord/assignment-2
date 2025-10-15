@@ -4,10 +4,12 @@ import { PrismaClient } from '@/generated/prisma';
 const prisma = new PrismaClient();
 
 // GET - Retrieve single output
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params; // Await the params object
+
     const output = await prisma.savedOutput.findUnique({
-      where: { id: params.id }
+      where: { id }
     });
 
     if (!output) {
