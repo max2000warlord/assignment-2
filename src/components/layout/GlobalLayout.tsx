@@ -14,7 +14,7 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <StdNo />
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-4">
+      <div className="fixed rounded-xl top-4 right-4 z-50 flex px-5 bg-black/50 backdrop-blur-2xl items-center gap-4">
         <ThemeToggle />
         <MenuButton
           isOpen={isMenuOpen}

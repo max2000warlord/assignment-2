@@ -59,18 +59,18 @@ export default function Home() {
               color="var(--neon-pink)"
             />
             <NavigationCard
-              href="/resources"
-              icon={<FolderOpen className="h-8 w-8" />}
-              title="Resources"
-              description="Course materials and downloads"
-              color="var(--neon-cyan)"
-            />
-            <NavigationCard
               href="/tools/tabs-generator"
               icon={<Wrench className="h-8 w-8" />}
               title="Tabs Generator"
               description="HTML generators and utilities"
               color="var(--neon-pink)"
+            />
+            <NavigationCard
+              href="/tools/escape-room"
+              icon={<FolderOpen className="h-8 w-8" />}
+              title="Escape Room"
+              description="Course materials and downloads"
+              color="var(--neon-cyan)"
             />
           </div>
         </main>

@@ -20,7 +20,8 @@ export function MenuButton({
       onClick={onToggle}
       className="border-2 transition-all duration-200 hover:scale-105"
       style={{
-        borderColor: "color",
+        borderColor: "var(--neon-cyan)",
+        color: "var(--neon-cyan)",
         background: "transparent",
         boxShadow: `0 0 15px ${color}, inset 0 0 15px ${color}`,
       }}

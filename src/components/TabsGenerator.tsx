@@ -12,8 +12,8 @@ interface Tab {
 
 export default function TabsGenerator() {
   const [tabs, setTabs] = useState<Tab[]>([
-    { id: "1", label: "Tab 1", content: "Content for tab 1" },
-    { id: "2", label: "Tab 2", content: "Content for tab 2" },
+    { id: "1", label: "", content: "" },
+    { id: "2", label: "", content: "" },
   ])
   const [saveName, setSaveName] = useState("")
   const [isSaving, setIsSaving] = useState(false)
@@ -199,21 +199,30 @@ export default function TabsGenerator() {
       <div className="absolute inset-0" />
 
       <div className="relative z-0">
-        <main className="container mx-auto px-4 py-0">
+        <main className="container text-center mx-auto py-0">
           <Card
-            className="text-4xl inline-block flex justify-center text-center font-bold font-mono backdrop-blur-2xl bg-black/50 border-0 space-y-4"
+            className="text-4xl bg-black/50 inline-block px-4 backdrop-blur-2xl font-bold font-mono border-0 space-y-4"
             style={{
-              color: "var(--neon-pink)",
-              textShadow: "0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink)",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
             }}
           >
-            TABS GENERATOR
-          </Card>
-          <div className="pt-6 grid grid-cols-1 lg:grid-cols-2 gap-6 ">
-            <Card
-              className="p-6 pt-4 backdrop-blur-2xl border-0 space-y-4 h-fit max-h-[70vh] overflow-y-auto"
+            <h2
               style={{
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0 0 10px var(--neon-pink)) drop-shadow(0 0 20px var(--neon-purple)) drop-shadow(0 0 30px var(--neon-cyan))",
+              }}
+            >
+              TABS GENERATOR
+            </h2>
+          </Card>
+          <div className="pt-2 grid grid-cols-1 lg:grid-cols-2 gap-6 rounded-xl">
+            <Card
+              className="pt-4 backdrop-blur-2xl border-0 space-y-4 px-3 h-fit max-h-[70vh] overflow-y-auto"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
                 borderColor: "var(--neon-cyan)",
                 height: '90vh',
                 maxHeight: '90vh',
@@ -222,11 +231,11 @@ export default function TabsGenerator() {
               <h2
                 className="text-3xl text-center md:text-3xl font-bold font-mono mb-0"
                 style={{
-                  background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
+                  background: 'linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))',
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                  filter: "drop-shadow(0 0 20px var(--neon-pink)) drop-shadow(0 0 40px var(--neon-cyan))",
+                  filter: "drop-shadow(0 0 10px var(--neon-pink)) drop-shadow(0 0 20px var(--neon-purple)) drop-shadow(0 0 30px var(--neon-cyan))",
                 }}
               >
                 Configure Tabs
@@ -235,9 +244,9 @@ export default function TabsGenerator() {
               {tabs.map((tab) => (
                 <div
                   key={tab.id}
-                  className="border-2  p-4 rounded-lg space-y-3 transition-all"
+                  className="border-0 px-6 py-4 rounded-xl space-y-3 transition-all"
                   style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
                     borderColor: "var(--neon-magenta)",
                     boxShadow: "0 0 10px var(--neon-magenta)",
                   }}
@@ -246,22 +255,24 @@ export default function TabsGenerator() {
                     type="text"
                     value={tab.label}
                     onChange={(e) => updateTab(tab.id, "label", e.target.value)}
-                    className="w-full p-3 border-2 rounded focus:outline-none transition-all font-mono"
+                    placeholder="Tab name"
+                    className="w-full p-3 border-2 rounded-xl backdrop-blur-2xl focus:outline-none transition-all font-mono"
                     style={{
-                      backgroundColor: "rgba(0, 0, 0, 0.6)",
+                      backgroundColor: "rgba(0, 0, 0, 0.125)",
                       borderColor: "var(--neon-cyan)",
                       color: "var(--neon-cyan)",
+                      boxShadow: "0 0 10px var(--neon-cyan)",
                     }}
-                    placeholder="Tab label"
                   />
                   <textarea
                     value={tab.content}
                     onChange={(e) => updateTab(tab.id, "content", e.target.value)}
-                    className="w-full p-3 border-2 rounded focus:outline-none transition-all resize-none"
+                    className="w-full p-3 border-2 rounded-xl backdrop-blur-2xl focus:outline-none transition-all resize-none"
                     style={{
-                      backgroundColor: "rgba(0, 0, 0, 0.6)",
+                      backgroundColor: "rgba(0, 0, 0, 0.125)",
                       borderColor: "var(--neon-cyan)",
                       color: "rgba(255, 255, 255, 0.9)",
+                      boxShadow: "0 0 10px var(--neon-cyan)",
                     }}
                     rows={3}
                     placeholder="Tab content"
@@ -282,64 +293,68 @@ export default function TabsGenerator() {
                   </Button>
                 </div>
               ))}
-
-              <Button
-                onClick={addTab}
-                className="w-full border-2 transition-all font-bold"
-                style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.7)",
-                  borderColor: "var(--neon-cyan)",
-                  color: "var(--neon-cyan)",
-                  boxShadow: "0 0 15px var(--neon-cyan)",
-                }}
-              >
-                Add New Tab
-              </Button>
-              <Button
-                onClick={() => setShowPreview(!showPreview)}
-                variant="outline"
-                className="w-full border-2 transition-all"
-                style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.7)",
-                  borderColor: "var(--neon-magenta)",
-                  color: "var(--neon-magenta)",
-                  boxShadow: "0 0 15px var(--neon-magenta)",
-                }}
-              >
-                {showPreview ? "Hide" : "Show"} Live Preview
-              </Button>
-              <Button
-                onClick={generateCode}
-                className="w-full border-2 transition-all font-bold"
-                style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.7)",
-                  borderColor: "var(--neon-pink)",
-                  color: "var(--neon-pink)",
-                  boxShadow: "0 0 15px var(--neon-pink)",
-                }}
-              >
-                Generate HTML Code
-              </Button>
+              <div className="flex justify-center gap-3">
+                <Button
+                  onClick={addTab}
+                  className="inline-block text-lg border-0 flex py-10 transition-all font-bold"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    borderColor: "var(--neon-cyan)",
+                    color: "var(--neon-cyan)",
+                    boxShadow: "0 0 20px var(--neon-cyan)",
+                  }}
+                >
+                  Add New Tab
+                </Button>
+                <Button
+                  onClick={() => setShowPreview(!showPreview)}
+                  variant="outline"
+                  className="inline-block text-lg border-0 flex py-10 transition-all font-bold"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    borderColor: "var(--neon-purple)",
+                    color: "var(--neon-purple)",
+                    boxShadow: "0 0 20px var(--neon-purple)",
+                  }}
+                >
+                  {showPreview ? "Hide" : "Show"} Live Preview
+                </Button>
+                <Button
+                  onClick={generateCode}
+                  className="inline-block text-lg border-0 flex py-10 transition-all font-bold"
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    borderColor: "var(--neon-pink)",
+                    color: "var(--neon-pink)",
+                    boxShadow: "0 0 20px var(--neon-pink)",
+                  }}
+                >
+                  Generate HTML Code
+                </Button>
+              </div>
             </Card>
             {generatedCode ? (
-              <div className="relative">
+              <div className="relative rounded-xl">
                 {/* Floating header */}
                 <div
-                  className="absolute top-0 left-0 right-0 z-10 px-6 pt-4 flex justify-center items-center rounded-t-lg"
+                  className="absolute top-0 left-0 right-0 z-10 px-6 pt-4 flex justify-center items-center"
                 >
                   {/* Centered title */}
                   <CardHeader className="whitespace-nowrap justify-center">
-                    <CardTitle
-                      className="text-3xl flex font-semibold font-mono justify-center"
+                    <h2
+                      className="text-3xl text-center md:text-3xl font-bold font-mono mb-0"
                       style={{
-                        color: "var(--neon-pink)",
-                        textShadow: "0 0 10px var(--neon-pink)",
+                        background: `linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan))`,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        filter: "drop-shadow(0 0 10px var(--neon-pink)) drop-shadow(0 0 20px var(--neon-purple)) drop-shadow(0 0 30px var(--neon-cyan))",
                       }}
                     >
                       Generated Code
-                    </CardTitle>
+                    </h2>
 
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 items-center pt-4">
                       <input
                         type="text"
                         placeholder="Enter output name"
@@ -360,7 +375,7 @@ export default function TabsGenerator() {
                         style={{
                           backgroundColor: "rgba(0, 0, 0, 0.8)",
                           borderColor: "var(--neon-magenta)",
-                          color: "var(--neon-magenta)",
+                          color: "var(--neon-purple)",
                           boxShadow: "0 0 15px var(--neon-magenta)",
                         }}
                       >
@@ -387,7 +402,7 @@ export default function TabsGenerator() {
                 {/* SyntaxHighlighter as the card */}
 
                 <div
-                  className="border-0 rounded-lg backdrop-blur-2xl pt-5 p-8 pb-8 text-center flex items-center justify-center"
+                  className="border-0 rounded-xl backdrop-blur-2xl px-3 pt-8 p-8 pb-8 text-center flex items-center justify-center"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     borderColor: "var(--neon-magenta)",
@@ -398,7 +413,7 @@ export default function TabsGenerator() {
                   }}
                 >
                   <SyntaxHighlighter
-                    className="p-8, rounded-lg"
+                    className="p-8"
                     language="html"
                     style={synthwaveStyle}
                     customStyle={{
@@ -407,7 +422,7 @@ export default function TabsGenerator() {
                       fontSize: '14px',
                       height: '70vh',
                       maxHeight: '70vh',
-                      borderRadius: '8px',
+                      borderRadius: '10px',
                       backgroundColor: "rgba(0, 0, 0, 0.0)",
                     }}
                     showLineNumbers={true}
@@ -464,15 +479,17 @@ export default function TabsGenerator() {
 
           {showPreview && tabs.length > 0 && (
             <Card
-              className="mt-8 p-6 border-0 backdrop-blur-md"
+              className="mt-8 p-6 border-0 backdrop-blur-2xl"
               style={{
                 borderColor: "var(--neon-purple)",
                 boxShadow: "0 0 15px var(--neon-purple)",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
               }}
             >
               <h2
-                className="text-2xl font-semibold mb-4 font-mono"
+                className="text-2xl font-semibold mb-0 font-mono"
                 style={{
+                  backgroundColor: "transparent",
                   color: "var(--neon-purple)",
                   textShadow: "0 0 10px var(--neon-purple)",
                 }}
@@ -480,18 +497,18 @@ export default function TabsGenerator() {
                 Live Preview
               </h2>
               <div
-                className="border-2 rounded-lg overflow-hidden"
+                className="border-0 rounded-lg overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
                   borderColor: "var(--neon-cyan)",
-                  boxShadow: "0 0 15px var(--neon-cyan)",
+                  boxShadow: "0 0 10px var(--neon-cyan)",
                 }}
               >
                 {/* Tab Buttons */}
                 <div
                   className="flex border-b-0"
                   style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.6)",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
                     borderColor: "var(--neon-magenta)",
                   }}
                 >
@@ -517,7 +534,7 @@ export default function TabsGenerator() {
                 <div
                   className="p-6 min-h-[200px]"
                   style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
                   }}
                 >
                   <div
