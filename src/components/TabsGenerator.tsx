@@ -15,6 +15,8 @@ export default function TabsGenerator() {
     { id: "1", label: "Tab 1", content: "Content for tab 1" },
     { id: "2", label: "Tab 2", content: "Content for tab 2" },
   ])
+  const [saveName, setSaveName] = useState("")
+  const [isSaving, setIsSaving] = useState(false)
   const [generatedCode, setGeneratedCode] = useState("")
   const [showPreview, setShowPreview] = useState(false)
   const [activePreviewTab, setActivePreviewTab] = useState(0)
@@ -163,7 +165,35 @@ export default function TabsGenerator() {
     navigator.clipboard.writeText(generatedCode)
     alert("Code copied to clipboard!")
   }
+  const saveCode = async () => {
+    if (!saveName.trim()) {
+      alert("Please enter a name for your output!")
+      return
+    }
 
+    setIsSaving(true)
+    try {
+      const response = await fetch('/api/outputs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: saveName,
+          htmlCode: generatedCode
+        })
+      })
+
+      if (response.ok) {
+        alert("Output saved successfully!")
+        setSaveName("")
+      } else {
+        alert("Failed to save output")
+      }
+    } catch (error) {
+      alert("Error saving output")
+    } finally {
+      setIsSaving(false)
+    }
+  }
   return (
     <div className=" relative">
       <div className="absolute inset-0" />
@@ -300,7 +330,7 @@ export default function TabsGenerator() {
                   {/* Centered title */}
                   <CardHeader className="whitespace-nowrap justify-center">
                     <CardTitle
-                      className="text-3xl font-semibold font-mono justify-center"
+                      className="text-3xl flex font-semibold font-mono justify-center"
                       style={{
                         color: "var(--neon-pink)",
                         textShadow: "0 0 10px var(--neon-pink)",
@@ -309,19 +339,47 @@ export default function TabsGenerator() {
                       Generated Code
                     </CardTitle>
 
-                    <Button
-                      onClick={copyCode}
-                      size="sm"
-                      className="absolute right-6 border-0 transition-all font-bold rounded-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(26, 0, 51, 0.5) 0%, rgba(13, 0, 26, 0.5) 100%)',
-                        borderColor: "var(--neon-cyan)",
-                        color: "var(--neon-cyan)",
-                        boxShadow: "0 0 10px var(--neon-cyan)",
-                      }}
-                    >
-                      Copy Code
-                    </Button>
+                    <div className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        placeholder="Enter output name"
+                        value={saveName}
+                        onChange={(e) => setSaveName(e.target.value)}
+                        className="flex-1 px-3 py-2 rounded-lg border-2 font-mono"
+                        style={{
+                          backgroundColor: "rgba(0, 0, 0, 0.7)",
+                          borderColor: "var(--neon-cyan)",
+                          color: "var(--neon-cyan)",
+                        }}
+                      />
+                      <Button
+                        onClick={saveCode}
+                        disabled={isSaving}
+                        size="sm"
+                        className="border-2 transition-all font-bold rounded-lg"
+                        style={{
+                          backgroundColor: "rgba(0, 0, 0, 0.8)",
+                          borderColor: "var(--neon-magenta)",
+                          color: "var(--neon-magenta)",
+                          boxShadow: "0 0 15px var(--neon-magenta)",
+                        }}
+                      >
+                        {isSaving ? "Saving..." : "Save"}
+                      </Button>
+                      <Button
+                        onClick={copyCode}
+                        size="sm"
+                        className="border-0 transition-all font-bold rounded-lg"
+                        style={{
+                          backgroundColor: "rgba(0, 0, 0, 0.8)",
+                          borderColor: "var(--neon-cyan)",
+                          color: "var(--neon-cyan)",
+                          boxShadow: "0 0 15px var(--neon-cyan)",
+                        }}
+                      >
+                        Copy Code
+                      </Button>
+                    </div>
                   </CardHeader>
 
                   {/* Button absolutely positioned to the right */}

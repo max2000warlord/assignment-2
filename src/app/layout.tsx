@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Suspense fallback={null}>
-          <ThemeProvider defaultTheme="dark" attribute="class">
+          <ThemeProvider attribute="class">
             <GlobalLayout>{children}</GlobalLayout>
           </ThemeProvider>
           <Analytics />
