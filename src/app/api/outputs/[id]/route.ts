@@ -23,13 +23,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 }
 
 // PUT - Update output
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const { name, htmlCode } = body;
 
     const output = await prisma.savedOutput.update({
-      where: { id: params.id },
+      where: { id },
       data: { name, htmlCode }
     });
 
@@ -40,10 +41,12 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 }
 
 // DELETE - Remove output
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
+
     await prisma.savedOutput.delete({
-      where: { id: params.id }
+      where: { id }
     });
 
     return NextResponse.json({ message: 'Output deleted successfully' });
