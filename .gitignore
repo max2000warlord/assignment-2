@@ -52,5 +52,3 @@ bun.lockb
 ./src/components/Header.tsx
 ./src/components/Header.tsx.old
 /node_modules
-
-/src/generated/prisma
