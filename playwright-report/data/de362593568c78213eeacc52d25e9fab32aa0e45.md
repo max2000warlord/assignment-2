@@ -1,0 +1,62 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - img [ref=e4]
+    - heading "Matthew Anderson 21988151" [level=1] [ref=e7]:
+      - text: Matthew Anderson
+      - text: "21988151"
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - img [ref=e10]
+      - switch "Toggle theme" [ref=e20]
+      - img [ref=e21]
+    - button "Open menu" [ref=e23]:
+      - img
+  - navigation [ref=e26]:
+    - link "Home" [ref=e27] [cursor=pointer]:
+      - /url: /
+      - img [ref=e28]
+      - text: Home
+    - link "Tabs Generator" [ref=e31] [cursor=pointer]:
+      - /url: /tools/tabs-generator/
+      - img [ref=e32]
+      - text: Tabs Generator
+    - link "🔖 Escape Room" [ref=e34] [cursor=pointer]:
+      - /url: /tools/escape-room/
+  - generic [ref=e37]:
+    - heading "🚪 CODE ESCAPE ROOM" [level=1] [ref=e38]
+    - generic [ref=e39]:
+      - generic [ref=e40]: "⏱️ Time: 10:00"
+      - generic [ref=e41]:
+        - button "▶️ Start Timer" [ref=e42] [cursor=pointer]
+        - button "🔄 Reset" [ref=e43] [cursor=pointer]
+    - generic [ref=e44]:
+      - 'heading "Stage 1/4: Format Code Correctly" [level=2] [ref=e45]'
+      - paragraph [ref=e46]: "Fix the indentation and syntax of this JavaScript code:"
+      - generic [ref=e47]:
+        - text: 💡
+        - strong [ref=e48]: "Hint:"
+        - text: Add proper spacing, indentation, and semicolons
+      - textbox "Write your code here..." [ref=e49]: "function hello(){ console.log(\"Hello World\") }"
+      - button "🚀 Submit Solution" [disabled] [ref=e51] [cursor=pointer]
+      - generic [ref=e53]: "Progress: 0/4 stages completed"
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - heading "💾 Save Your Progress" [level=3] [ref=e57]
+        - button "📊 Show History" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]:
+        - textbox "Enter run name... (e.g., 'First attempt', 'Speed run')" [ref=e60]
+        - button "💾 Save Run" [ref=e61] [cursor=pointer]
+        - button "📋 Copy HTML" [ref=e62] [cursor=pointer]
+      - generic [ref=e63]:
+        - strong [ref=e64]: "Current Run Stats:"
+        - text: "✅ Stages: 0/4 completed"
+        - text: "⏱️ Time Used: 0:00"
+        - text: "🎯 Status: 🔄 In Progress"
+        - text: "📊 Success Rate: 0%"
+  - button "Open Next.js Dev Tools" [ref=e70] [cursor=pointer]:
+    - img [ref=e71]
+  - alert [ref=e75]
+```

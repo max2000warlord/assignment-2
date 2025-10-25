@@ -1,0 +1,62 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - img [ref=e4]
+    - heading "Matthew Anderson 21988151" [level=1] [ref=e7]:
+      - text: Matthew Anderson
+      - text: "21988151"
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - img [ref=e10]
+      - switch "Toggle theme" [ref=e20]
+      - img [ref=e21]
+    - button "Open menu" [ref=e23]:
+      - img
+  - navigation [ref=e26]:
+    - link "Home" [ref=e27] [cursor=pointer]:
+      - /url: /
+      - img [ref=e28]
+      - text: Home
+    - button "Features" [ref=e31]:
+      - img [ref=e33]
+      - generic [ref=e35]: Features
+    - link "🔖 Tabs Generator" [ref=e36] [cursor=pointer]:
+      - /url: /tools/tabs-generator/
+    - link "🔖 Escape Room" [ref=e37] [cursor=pointer]:
+      - /url: /tools/escape-room/
+    - button "Broadcast" [ref=e38]:
+      - img [ref=e40]
+      - generic [ref=e46]: Broadcast
+    - button "Profile" [ref=e47]:
+      - img [ref=e49]
+      - generic [ref=e52]: Profile
+    - button "Settings" [ref=e53]:
+      - img [ref=e55]
+      - generic [ref=e58]: Settings
+  - main [ref=e59]:
+    - main [ref=e63]:
+      - heading "TABS GENERATOR" [level=2] [ref=e65]
+      - generic [ref=e66]:
+        - generic [ref=e67]:
+          - heading "Configure Tabs" [level=2] [ref=e68]
+          - generic [ref=e69]:
+            - textbox "Tab name" [ref=e70]
+            - textbox "Tab content" [ref=e71]
+            - button "Remove Tab" [ref=e72]
+          - generic [ref=e73]:
+            - textbox "Tab name" [ref=e74]
+            - textbox "Tab content" [ref=e75]
+            - button "Remove Tab" [ref=e76]
+          - generic [ref=e77]:
+            - button "Add New Tab" [ref=e78]
+            - button "Show Live Preview" [ref=e79]
+            - button "Generate HTML Code" [ref=e80]
+        - generic [ref=e81]:
+          - heading "Generated Code" [level=2] [ref=e83]
+          - generic [ref=e84]: Click "Generate HTML Code" to see the output
+  - button "Open Next.js Dev Tools" [ref=e90] [cursor=pointer]:
+    - img [ref=e91]
+  - alert [ref=e95]
+```

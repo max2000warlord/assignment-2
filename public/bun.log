@@ -1,0 +1,94 @@
+nohup: ignoring input
+$ next dev
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.19:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1226ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1178ms (737 modules)
+Current theme: light
+ GET /Contact/ 404 in 1424ms
+ ○ Compiling / ...
+ ✓ Compiled / in 508ms (754 modules)
+ GET / 200 in 587ms
+ GET / 200 in 13ms
+ GET /Contact/ 404 in 14ms
+Current theme: light
+ GET /Contact/ 404 in 90ms
+ GET / 200 in 10ms
+ GET /Contact/ 404 in 9ms
+Current theme: light
+ GET /Contact/ 404 in 31ms
+ GET / 200 in 12ms
+ ✓ Compiled /about in 263ms (745 modules)
+ GET /about/ 200 in 328ms
+Current theme: light
+ GET /about/vid.mp4 404 in 105ms
+ ✓ Compiled in 141ms (755 modules)
+ ✓ Compiled /about in 87ms (466 modules)
+ GET /about/ 200 in 148ms
+Current theme: light
+ GET /about/vid.mp4 404 in 90ms
+Current theme: light
+ GET / 200 in 49ms
+ GET /Contact/ 404 in 12ms
+Current theme: light
+ GET /Contact/ 404 in 30ms
+Current theme: light
+ GET / 200 in 37ms
+ GET /about/ 200 in 12ms
+Current theme: light
+ GET /about/vid.mp4 404 in 30ms
+ ✓ Compiled in 285ms (754 modules)
+ GET /about/ 200 in 60ms
+Current theme: light
+ GET /about/ 200 in 95ms
+ ✓ Compiled in 295ms (754 modules)
+ GET /about/ 200 in 60ms
+ GET /about/ 200 in 11ms
+ ✓ Compiled /tools/escape-room in 222ms (748 modules)
+ GET /tools/escape-room/ 200 in 280ms
+ ✓ Compiled /api/escape-room in 268ms (779 modules)
+ GET /api/escape-room/ 200 in 674ms
+ GET /api/escape-room/ 200 in 6ms
+ GET /about/ 200 in 40ms
+ GET /api/escape-room/ 200 in 12ms
+ GET /api/escape-room/ 200 in 8ms
+ GET / 200 in 17ms
+ ✓ Compiled /_not-found in 273ms (784 modules)
+ GET /Contact/ 404 in 331ms
+Current theme: light
+ GET /Contact/ 404 in 99ms
+ ✓ Compiled in 563ms (764 modules)
+ ✓ Compiled /_not-found in 103ms (755 modules)
+ GET /Contact/ 404 in 186ms
+Current theme: light
+ GET /Contact/ 404 in 100ms
+ ✓ Compiled in 322ms (766 modules)
+ ✓ Compiled /_not-found in 106ms (757 modules)
+ GET /Contact/ 404 in 170ms
+Current theme: light
+ GET /Contact/ 404 in 100ms
+ ✓ Compiled in 247ms (771 modules)
+ GET /Contact/ 404 in 52ms
+Current theme: light
+ GET /Contact/ 404 in 97ms
+ ✓ Compiled in 179ms (771 modules)
+ GET /Contact/ 404 in 38ms
+Current theme: light
+ GET /Contact/ 404 in 77ms
+ GET / 200 in 14ms
+ GET /Contact/ 404 in 9ms
+Current theme: light
+ GET /Contact/ 404 in 31ms
+ ✓ Compiled in 310ms (766 modules)
+Current theme: light
+ GET / 200 in 146ms
+ GET /about/ 200 in 17ms
+ ✓ Compiled in 370ms (766 modules)
+ GET /about/ 200 in 66ms
+ GET /about/ 200 in 13ms
+error: script "dev" was terminated by signal SIGHUP (Terminal hung up)

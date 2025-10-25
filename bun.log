@@ -1,0 +1,25 @@
+nohup: ignoring input
+$ next dev
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.19:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1232ms
+ ○ Compiling / ...
+ ✓ Compiled / in 706ms (735 modules)
+Current theme: light
+ GET / 200 in 955ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 689ms (754 modules)
+ GET /about/ 200 in 752ms
+ GET /about/ 200 in 16ms
+ ✓ Compiled /_not-found in 130ms (745 modules)
+Current theme: light
+ GET /public/vid.mp4 404 in 278ms
+Current theme: light
+ GET /about/ 200 in 40ms
+Current theme: light
+ GET /public/vid.mp4 404 in 29ms
+error: script "dev" was terminated by signal SIGHUP (Terminal hung up)

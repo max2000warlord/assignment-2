@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model SavedOutput {
+  id        String   @id @default(cuid())
+  name      String
+  htmlCode  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model EscapeRoomRun {
+  id              String   @id @default(cuid())
+  name            String
+  htmlCode        String
+  completedStages Int[]
+  totalStages     Int
+  timeUsed        Int
+  totalTime       Int
+  isCompleted     Boolean  @default(false)
+  successRate     Float
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([isCompleted])
+  @@index([createdAt])
+}
